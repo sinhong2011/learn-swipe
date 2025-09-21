@@ -288,8 +288,12 @@ function TabsContents({
       >
         {childrenArray.map((child, index) => {
           const key =
-            React.isValidElement(child) && child.props && 'value' in child.props
-              ? `tab-content-${child.props.value}`
+            React.isValidElement(child) &&
+            child.props &&
+            typeof child.props === 'object' &&
+            child.props !== null &&
+            'value' in child.props
+              ? `tab-content-${(child.props as { value: string }).value}`
               : `tab-content-${index}`
           return (
             <div

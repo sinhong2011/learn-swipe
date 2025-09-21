@@ -1,7 +1,6 @@
 import { I18nProvider } from '@lingui/react'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { StrictMode } from 'react'
-import { CookiesProvider } from 'react-cookie'
 import ReactDOM from 'react-dom/client'
 
 // Import the generated route tree
@@ -45,13 +44,11 @@ if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <CookiesProvider>
-        <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-          <I18nProvider i18n={i18n}>
-            <RouterProvider router={router} />
-          </I18nProvider>
-        </ThemeProvider>
-      </CookiesProvider>
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        <I18nProvider i18n={i18n}>
+          <RouterProvider router={router} />
+        </I18nProvider>
+      </ThemeProvider>
     </StrictMode>
   )
 }

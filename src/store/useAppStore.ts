@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
+import { immer } from 'zustand/middleware/immer'
 import { defaultLocale } from '@/i18n'
 
 export interface UploadState {
@@ -29,6 +30,9 @@ export interface AppState {
   // Language preference
   language: string
 
+  // Sidebar state
+  sidebarOpen: boolean
+
   // Actions
   setCurrentTab: (tab: 'study' | 'decks') => void
   setUploadModalOpen: (open: boolean) => void
@@ -37,6 +41,8 @@ export interface AppState {
   setBreadcrumbs: (items: BreadcrumbItem[]) => void
   clearBreadcrumbs: () => void
   setLanguage: (language: string) => void
+  setSidebarOpen: (open: boolean) => void
+  toggleSidebar: () => void
 }
 
 const initialUploadState: UploadState = {
@@ -49,48 +55,69 @@ const initialUploadState: UploadState = {
 export const useAppStore = create<AppState>()(
   devtools(
     persist(
-      (set) => ({
+      immer((set) => ({
         // Initial state
         upload: initialUploadState,
         currentTab: 'study',
         language: defaultLocale,
+        sidebarOpen: true, // Default to open
 
         isUploadModalOpen: false,
         breadcrumbs: [],
 
         // Actions
         setCurrentTab: (tab) =>
-          set({ currentTab: tab }, false, 'setCurrentTab'),
+          set((draft) => {
+            draft.currentTab = tab
+          }),
 
         setUploadModalOpen: (open) =>
-          set({ isUploadModalOpen: open }, false, 'setUploadModalOpen'),
+          set((draft) => {
+            draft.isUploadModalOpen = open
+          }),
 
         setUploadState: (state) =>
-          set(
-            (prev) => ({
-              upload: { ...prev.upload, ...state },
-            }),
-            false,
-            'setUploadState'
-          ),
+          set((draft) => {
+            Object.assign(draft.upload, state)
+          }),
 
         resetUploadState: () =>
-          set({ upload: initialUploadState }, false, 'resetUploadState'),
+          set((draft) => {
+            draft.upload = initialUploadState
+          }),
 
         setBreadcrumbs: (items: BreadcrumbItem[]) =>
-          set({ breadcrumbs: items }, false, 'setBreadcrumbs'),
+          set((draft) => {
+            draft.breadcrumbs = items
+          }),
+
         clearBreadcrumbs: () =>
-          set({ breadcrumbs: [] }, false, 'clearBreadcrumbs'),
+          set((draft) => {
+            draft.breadcrumbs = []
+          }),
 
         setLanguage: (language: string) =>
-          set({ language }, false, 'setLanguage'),
-      }),
+          set((draft) => {
+            draft.language = language
+          }),
+
+        setSidebarOpen: (open: boolean) =>
+          set((draft) => {
+            draft.sidebarOpen = open
+          }),
+
+        toggleSidebar: () =>
+          set((draft) => {
+            draft.sidebarOpen = !draft.sidebarOpen
+          }),
+      })),
       {
         name: 'app-store',
         // Only persist certain parts of the state
         partialize: (state) => ({
           currentTab: state.currentTab,
           language: state.language,
+          sidebarOpen: state.sidebarOpen, // Persist sidebar state
 
           // Reset upload state and modal state on app restart
           upload: {

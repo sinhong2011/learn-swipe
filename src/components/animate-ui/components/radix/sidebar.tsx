@@ -5,7 +5,6 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { PanelLeftIcon } from 'lucide-react'
 import type { Transition } from 'motion/react'
 import * as React from 'react'
-import { useCookies } from 'react-cookie'
 import {
   Tooltip,
   TooltipContent,
@@ -30,9 +29,8 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useIsMobile } from '@/hooks/use-mobile'
 import { getStrictContext } from '@/lib/get-strict-context'
 import { cn } from '@/lib/utils'
+import { useAppStore } from '@/store/useAppStore'
 
-const SIDEBAR_COOKIE_NAME = 'sidebar_state'
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 const SIDEBAR_WIDTH = '16rem'
 const SIDEBAR_WIDTH_MOBILE = '18rem'
 const SIDEBAR_WIDTH_ICON = '3rem'
@@ -68,32 +66,22 @@ function SidebarProvider({
 }: SidebarProviderProps) {
   const isMobile = useIsMobile()
   const [openMobile, setOpenMobile] = React.useState(false)
-  const [cookies, setCookie] = useCookies([SIDEBAR_COOKIE_NAME])
 
-  // This is the internal state of the sidebar.
-  // We use openProp and setOpenProp for control from outside the component.
-  // Initialize from cookie if available, otherwise use defaultOpen
-  const cookieValue = cookies[SIDEBAR_COOKIE_NAME]
-  const initialOpen =
-    cookieValue !== undefined ? cookieValue === 'true' : defaultOpen
-  const [_open, _setOpen] = React.useState(initialOpen)
-  const open = openProp ?? _open
+  // Use app store for sidebar state management
+  const { sidebarOpen, setSidebarOpen } = useAppStore()
+
+  // Use the app store state or the prop override
+  const open = openProp ?? sidebarOpen
   const setOpen = React.useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
       const openState = typeof value === 'function' ? value(open) : value
       if (setOpenProp) {
         setOpenProp(openState)
       } else {
-        _setOpen(openState)
+        setSidebarOpen(openState)
       }
-
-      // This sets the cookie to keep the sidebar state.
-      setCookie(SIDEBAR_COOKIE_NAME, String(openState), {
-        path: '/',
-        maxAge: SIDEBAR_COOKIE_MAX_AGE,
-      })
     },
-    [setOpenProp, open, setCookie]
+    [setOpenProp, open, setSidebarOpen]
   )
 
   // Helper to toggle the sidebar.

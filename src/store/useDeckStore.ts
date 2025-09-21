@@ -1,6 +1,7 @@
 import { t } from '@lingui/core/macro'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
+import { immer } from 'zustand/middleware/immer'
 import type { Card, Deck } from '@/lib/dexie-db'
 import { dbHelpers } from '@/lib/dexie-db'
 
@@ -56,7 +57,7 @@ export interface DeckState {
 export const useDeckStore = create<DeckState>()(
   devtools(
     persist(
-      (set, get) => ({
+      immer((set, get) => ({
         // Initial state
         decks: [],
         currentDeck: null,
@@ -68,109 +69,91 @@ export const useDeckStore = create<DeckState>()(
 
         // Load all decks from database
         loadDecks: async () => {
-          set({ isLoading: true, error: null }, false, 'loadDecks/start')
+          set((draft) => {
+            draft.isLoading = true
+            draft.error = null
+          })
 
           try {
             const deckList = await dbHelpers.listDecks()
-            set(
-              {
-                decks: deckList,
-                isLoading: false,
-              },
-              false,
-              'loadDecks/success'
-            )
+            set((draft) => {
+              draft.decks = deckList
+              draft.isLoading = false
+            })
           } catch (error) {
             const errorMessage =
               error instanceof Error ? error.message : t`Failed to load decks`
-            set(
-              {
-                error: errorMessage,
-                isLoading: false,
-              },
-              false,
-              'loadDecks/error'
-            )
+            set((draft) => {
+              draft.error = errorMessage
+              draft.isLoading = false
+            })
             throw error
           }
         },
 
         // Create a new deck
         createDeck: async (name: string) => {
-          set({ isCreating: true, error: null }, false, 'createDeck/start')
+          set((draft) => {
+            draft.isCreating = true
+            draft.error = null
+          })
 
           try {
             const newDeck = await dbHelpers.createDeck(name)
-            const currentDecks = get().decks
 
-            set(
-              {
-                decks: [...currentDecks, newDeck],
-                currentDeck: newDeck,
-                isCreating: false,
-              },
-              false,
-              'createDeck/success'
-            )
+            set((draft) => {
+              draft.decks.push(newDeck)
+              draft.currentDeck = newDeck
+              draft.isCreating = false
+            })
 
             return newDeck
           } catch (error) {
             const errorMessage =
               error instanceof Error ? error.message : 'Failed to create deck'
-            set(
-              {
-                error: errorMessage,
-                isCreating: false,
-              },
-              false,
-              'createDeck/error'
-            )
+            set((draft) => {
+              draft.error = errorMessage
+              draft.isCreating = false
+            })
             throw error
           }
         },
 
         // Delete a deck
         deleteDeck: async (deckId: string) => {
-          set({ isDeleting: true, error: null }, false, 'deleteDeck/start')
+          set((draft) => {
+            draft.isDeleting = true
+            draft.error = null
+          })
 
           try {
             await dbHelpers.deleteDeck(deckId)
-            const currentDecks = get().decks
-            const currentDeck = get().currentDeck
 
-            const updatedDecks = currentDecks.filter(
-              (deck) => deck.deck_id !== deckId
-            )
-            const updatedCurrentDeck =
-              currentDeck?.deck_id === deckId ? null : currentDeck
-
-            set(
-              {
-                decks: updatedDecks,
-                currentDeck: updatedCurrentDeck,
-                isDeleting: false,
-              },
-              false,
-              'deleteDeck/success'
-            )
+            set((draft) => {
+              draft.decks = draft.decks.filter(
+                (deck) => deck.deck_id !== deckId
+              )
+              if (draft.currentDeck?.deck_id === deckId) {
+                draft.currentDeck = null
+              }
+              draft.isDeleting = false
+            })
           } catch (error) {
             const errorMessage =
               error instanceof Error ? error.message : 'Failed to delete deck'
-            set(
-              {
-                error: errorMessage,
-                isDeleting: false,
-              },
-              false,
-              'deleteDeck/error'
-            )
+            set((draft) => {
+              draft.error = errorMessage
+              draft.isDeleting = false
+            })
             throw error
           }
         },
 
         // Set current deck
         setCurrentDeck: (deck: Deck | null) => {
-          set({ currentDeck: deck }, false, 'setCurrentDeck')
+          set((draft) => {
+            draft.currentDeck = deck
+          })
         },
 
         // Load stats for a specific deck
@@ -183,18 +166,19 @@ export const useDeckStore = create<DeckState>()(
               error instanceof Error
                 ? error.message
                 : 'Failed to load deck stats'
-            set({ error: errorMessage }, false, 'loadDeckStats/error')
+            set((draft) => {
+              draft.error = errorMessage
+            })
             throw error
           }
         },
 
         // Load all decks with their stats
         loadDecksWithStats: async () => {
-          set(
-            { isLoading: true, error: null },
-            false,
-            'loadDecksWithStats/start'
-          )
+          set((draft) => {
+            draft.isLoading = true
+            draft.error = null
+          })
 
           try {
             const deckList = await dbHelpers.listDecks()
@@ -217,14 +201,10 @@ export const useDeckStore = create<DeckState>()(
 
             const decksWithStats = await Promise.all(decksWithStatsPromises)
 
-            set(
-              {
-                decks: deckList,
-                isLoading: false,
-              },
-              false,
-              'loadDecksWithStats/success'
-            )
+            set((draft) => {
+              draft.decks = deckList
+              draft.isLoading = false
+            })
 
             return decksWithStats
           } catch (error) {
@@ -232,14 +212,10 @@ export const useDeckStore = create<DeckState>()(
               error instanceof Error
                 ? error.message
                 : 'Failed to load decks with stats'
-            set(
-              {
-                error: errorMessage,
-                isLoading: false,
-              },
-              false,
-              'loadDecksWithStats/error'
-            )
+            set((draft) => {
+              draft.error = errorMessage
+              draft.isLoading = false
+            })
             throw error
           }
         },
@@ -256,7 +232,9 @@ export const useDeckStore = create<DeckState>()(
           } catch (error) {
             const errorMessage =
               error instanceof Error ? error.message : 'Failed to add cards'
-            set({ error: errorMessage }, false, 'addCardsToCurrentDeck/error')
+            set((draft) => {
+              draft.error = errorMessage
+            })
             throw error
           }
         },
@@ -269,14 +247,18 @@ export const useDeckStore = create<DeckState>()(
           } catch (error) {
             const errorMessage =
               error instanceof Error ? error.message : 'Failed to get due cards'
-            set({ error: errorMessage }, false, 'getDueCardsForDeck/error')
+            set((draft) => {
+              draft.error = errorMessage
+            })
             throw error
           }
         },
 
         // Clear error state
         clearError: () => {
-          set({ error: null }, false, 'clearError')
+          set((draft) => {
+            draft.error = null
+          })
         },
 
         // Refresh decks (reload from database)
@@ -286,13 +268,11 @@ export const useDeckStore = create<DeckState>()(
 
         // Set blur preference for a deck
         setDeckBlur: (deckId: string, blurred: boolean) => {
-          set(
-            (prev) => ({ deckBlur: { ...prev.deckBlur, [deckId]: blurred } }),
-            false,
-            'setDeckBlur'
-          )
+          set((draft) => {
+            draft.deckBlur[deckId] = blurred
+          })
         },
-      }),
+      })),
       {
         name: 'deck-store',
         // Only persist core deck state, not loading/error states

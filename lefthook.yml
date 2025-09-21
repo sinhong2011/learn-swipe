@@ -19,7 +19,7 @@ pre-commit:
     # Type checking
     typecheck:
       glob: "*.{ts,tsx}"
-      run: bunx tsc --noEmit
+      run: bun x tsc --noEmit
       fail_text: "Type checking failed. Fix TypeScript errors before committing."
 
     # Unit tests
