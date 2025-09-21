@@ -44,9 +44,9 @@ pre-push:
       fail_text: "Build failed. Fix build errors before pushing."
 
     # E2E tests (skip for now as no e2e tests exist)
-    # e2e:
-    #   run: bun run test:e2e
-    #   fail_text: "E2E tests failed. Fix failing tests before pushing."
+    e2e:
+      run: bun run test:e2e
+      fail_text: "E2E tests failed. Fix failing tests before pushing."
 
 # Commit message hooks - validate commit message format
 commit-msg:

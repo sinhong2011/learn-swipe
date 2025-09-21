@@ -31,7 +31,7 @@ test.describe('Accessibility Tests', () => {
 
     // Check for labels (either explicit labels or aria-label)
     const deckNameLabel = page.locator('label:has-text("Deck Name")')
-    const fileLabel = page.locator('label:has-text("CSV File")')
+    const fileLabel = page.locator('label:has-text("CSV File")').first()
 
     await expect(deckNameLabel).toBeVisible()
     await expect(fileLabel).toBeVisible()

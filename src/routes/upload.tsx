@@ -215,35 +215,38 @@ function UploadPage() {
             onDrop={handleDrop}
           >
             <Button
-              type="button"
+              asChild
               variant="ghost"
               className="w-full h-auto p-8 text-center flex-col gap-4"
-              onClick={() => document.getElementById(fileInputId)?.click()}
-              disabled={upload.isUploading}
             >
-              <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-              {file ? (
-                <div>
-                  <p className="text-lg font-medium">{file.name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {(file.size / 1024).toFixed(1)} KB
-                  </p>
-                </div>
-              ) : (
-                <div>
-                  <p className="text-lg mb-4">
-                    Drop your CSV file here or click to browse
-                  </p>
-                  <Input
-                    id={fileInputId}
-                    type="file"
-                    accept=".csv,.txt,text/csv,text/plain"
-                    onChange={handleFileChange}
-                    disabled={upload.isUploading}
-                    className="max-w-xs mx-auto"
-                  />
-                </div>
-              )}
+              <label
+                htmlFor={fileInputId}
+                className="w-full h-auto text-center flex-col gap-4 inline-flex"
+              >
+                <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                {file ? (
+                  <div>
+                    <p className="text-lg font-medium">{file.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {(file.size / 1024).toFixed(1)} KB
+                    </p>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="text-lg mb-4">
+                      Drop your CSV file here or click to browse
+                    </p>
+                    <Input
+                      id={fileInputId}
+                      type="file"
+                      accept=".csv,.txt,text/csv,text/plain"
+                      onChange={handleFileChange}
+                      disabled={upload.isUploading}
+                      className="max-w-xs mx-auto"
+                    />
+                  </div>
+                )}
+              </label>
             </Button>
           </section>
         </div>
