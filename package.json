@@ -21,7 +21,6 @@
 		"i18n:test": "bun test src/tests/i18n/"
 	},
 	"dependencies": {
-		"@fontsource/noto-sans-tc": "^5.2.8",
 		"@fontsource/poppins": "^5.2.7",
 		"@lingui/cli": "^5.5.0",
 		"@lingui/react": "^5.5.0",
@@ -50,6 +49,7 @@
 		"react-dom": "^19.0.0",
 		"tailwind-merge": "^3.3.1",
 		"tailwindcss": "^4.0.6",
+		"uuid": "^13.0.0",
 		"zustand": "^5.0.8"
 	},
 	"devDependencies": {
@@ -63,6 +63,7 @@
 		"@types/node": "^24.5.2",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
+		"@types/uuid": "^11.0.0",
 		"@vitejs/plugin-react-swc": "^4.1.0",
 		"jsdom": "27.0.0",
 		"serwist": "^9.2.1",
@@ -73,5 +74,8 @@
 		"vitest": "^3.0.5",
 		"web-vitals": "5.1.0"
 	},
-	"packageManager": "bun@1.2.22"
+	"packageManager": "bun@1.2.22",
+	"engines": {
+		"bun": ">=1.2.22"
+	}
 }

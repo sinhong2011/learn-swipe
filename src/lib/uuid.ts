@@ -1,17 +1,9 @@
+import { v4 as uuidv4 } from "uuid";
+
 /**
- * Generate a UUID v4 compatible with older browsers (including iOS Safari)
- * Falls back to a custom implementation if crypto.randomUUID is not available
+ * Generate a UUID v4 using the npm uuid package
+ * This provides a reliable, well-tested UUID implementation
  */
 export function generateUUID(): string {
-	// Try to use the native crypto.randomUUID if available
-	if (crypto?.randomUUID) {
-		return crypto.randomUUID();
-	}
-
-	// Fallback implementation for older browsers
-	return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
-		const r = (Math.random() * 16) | 0;
-		const v = c === "x" ? r : (r & 0x3) | 0x8;
-		return v.toString(16);
-	});
+	return uuidv4();
 }
