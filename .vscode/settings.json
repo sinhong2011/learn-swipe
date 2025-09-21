@@ -1,0 +1,51 @@
+{
+	"files.watcherExclude": {
+		"**/routeTree.gen.ts": true
+	},
+	"search.exclude": {
+		"**/routeTree.gen.ts": true
+	},
+	"files.readonlyInclude": {
+		"**/routeTree.gen.ts": true
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "explicit",
+
+		"source.fixAll.biome": "explicit"
+	},
+	"go.goroot": "/Users/niskan516/.local/share/mise/installs/go/1.24.3",
+	"debug.javascript.defaultRuntimeExecutable": {
+		"pwa-node": "c:\\users\\niskan516\\scoop\\apps\\mise\\current\\mise\\shims\\node"
+	},
+	"go.alternateTools": {
+		"go": "/Users/niskan516/.local/share/mise/shims/go",
+		"gopls": "/Users/niskan516/.local/share/mise/shims/gopls"
+	},
+	"biome.enabled": true,
+	"prettier.enable": false,
+	"cSpell.words": ["Dexie"],
+	"i18n-ally.localesPaths": "src/locales",
+	"i18n-ally.namespace": true,
+	"i18n-ally.enabledParsers": ["po"]
+}

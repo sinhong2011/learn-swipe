@@ -1,0 +1,387 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-09-20 11:11+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#. placeholder {0}: deck.stats?.total || 0
+#. placeholder {1}: deck.stats?.mastered || 0
+#: src/routes/decks.tsx:160
+msgid "{0} cards • {1} mastered"
+msgstr "{0} cards • {1} mastered"
+
+#. placeholder {0}: deck.stats.total
+#. placeholder {1}: deck.stats.mastered
+#. placeholder {2}: deck.stats.due
+#: src/routes/index.tsx:153
+msgid "{0} cards • {1} mastered • {2} due"
+msgstr "{0} cards • {1} mastered • {2} due"
+
+#. placeholder {0}: deck.stats?.due || 0
+#: src/routes/decks.tsx:214
+msgid "{0} due"
+msgstr "{0} due"
+
+#: src/routes/settings.tsx:99
+#: src/utils/route-translations.ts:19
+msgid "About"
+msgstr "About"
+
+#: src/routes/decks.tsx:132
+#: src/routes/index.tsx:139
+msgid "Add Deck"
+msgstr "Add Deck"
+
+#: src/routes/settings.tsx:48
+msgid "Appearance"
+msgstr "Appearance"
+
+#. placeholder {0}: deck.name
+#: src/routes/decks.tsx:81
+msgid "Are you sure you want to delete \"{0}\"? This action cannot be undone."
+msgstr "Are you sure you want to delete \"{0}\"? This action cannot be undone."
+
+#: src/components/blur-answer-toggle.tsx:24
+msgid "Blur Answer"
+msgstr "Blur Answer"
+
+#: src/components/upload-modal.tsx:301
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/routes/decks.tsx:141
+msgid "Create your first deck to start learning with spaced repetition."
+msgstr "Create your first deck to start learning with spaced repetition."
+
+#: src/components/upload-modal.tsx:137
+msgid "Creating deck..."
+msgstr "Creating deck..."
+
+#: src/components/upload-modal.tsx:211
+msgid "CSV File"
+msgstr "CSV File"
+
+#: src/routes/settings.tsx:58
+msgid "Dark appearance"
+msgstr "Dark appearance"
+
+#: src/routes/settings.tsx:57
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
+#: src/routes/decks.tsx:52
+#: src/routes/decks.tsx:129
+msgid "Deck Management"
+msgstr "Deck Management"
+
+#: src/components/upload-modal.tsx:200
+msgid "Deck Name"
+msgstr "Deck Name"
+
+#: src/components/app-sidebar.tsx:29
+#: src/utils/route-translations.ts:13
+msgid "Decks"
+msgstr "Decks"
+
+#: src/routes/decks.tsx:179
+msgid "Delete"
+msgstr "Delete"
+
+#: src/components/upload-modal.tsx:233
+msgid "Drop your CSV file here or click to browse"
+msgstr "Drop your CSV file here or click to browse"
+
+#: src/components/upload-modal.tsx:204
+msgid "e.g. English Vocabulary"
+msgstr "e.g. English Vocabulary"
+
+#: src/routes/index.tsx:36
+#~ msgid "Edit src/routes/index.tsx and save to reload."
+#~ msgstr "Edit src/routes/index.tsx and save to reload."
+
+#: src/components/upload-modal.tsx:250
+msgid "Expected format:"
+msgstr "Expected format:"
+
+#: src/routes/decks.tsx:172
+msgid "Export CSV"
+msgstr "Export CSV"
+
+#: src/routes/decks.tsx:99
+msgid "Export functionality will be implemented soon."
+msgstr "Export functionality will be implemented soon."
+
+#: src/routes/decks.tsx:92
+msgid "Failed to delete deck"
+msgstr "Failed to delete deck"
+
+#: src/store/useDeckStore.ts:85
+msgid "Failed to load decks"
+msgstr "Failed to load decks"
+
+#: src/components/upload-modal.tsx:253
+msgid "First column = Question, Second column = Answer. Additional columns stored as extra fields."
+msgstr "First column = Question, Second column = Answer. Additional columns stored as extra fields."
+
+#: src/components/app-sidebar.tsx:55
+msgid "Flashcard Learning"
+msgstr "Flashcard Learning"
+
+#: src/routes/settings.tsx:111
+msgid "Flashcard Learning App"
+msgstr "Flashcard Learning App"
+
+#: src/routes/index.tsx:96
+msgid "Get Started"
+msgstr "Get Started"
+
+#: src/utils/route-translations.ts:21
+msgid "Help"
+msgstr "Help"
+
+#: src/components/app-breadcrumbs.tsx:23
+#: src/components/app-sidebar.tsx:23
+#: src/routes/index.tsx:30
+#: src/routes/study/$deckId.tsx:50
+#: src/utils/route-translations.ts:11
+msgid "Home"
+msgstr "Home"
+
+#: src/components/upload-modal.tsx:294
+msgid "Import Deck"
+msgstr "Import Deck"
+
+#: src/routes/index.tsx:123
+msgid "Intuitive mobile-first interface with smooth swipe gestures"
+msgstr "Intuitive mobile-first interface with smooth swipe gestures"
+
+#: src/routes/settings.tsx:20
+#~ msgid "Language"
+#~ msgstr "Language"
+
+#: src/routes/settings.tsx:66
+msgid "Language & Region"
+msgstr "Language & Region"
+
+#: src/components/language-switcher.tsx:38
+#~ msgid "Language:"
+#~ msgstr "Language:"
+
+#: src/routes/index.tsx:43
+#~ msgid "Learn React"
+#~ msgstr "Learn React"
+
+#: src/routes/index.tsx:51
+#~ msgid "Learn TanStack"
+#~ msgstr "Learn TanStack"
+
+#: src/routes/settings.tsx:58
+msgid "Light appearance"
+msgstr "Light appearance"
+
+#: src/routes/decks.tsx:107
+#: src/routes/index.tsx:73
+msgid "Loading decks..."
+msgstr "Loading decks..."
+
+#: src/routes/study/$deckId.tsx:94
+msgid "Loading…"
+msgstr "Loading…"
+
+#: src/routes/index.tsx:34
+#~ msgid "logo"
+#~ msgstr "logo"
+
+#: src/components/app-sidebar.tsx:61
+msgid "Navigation"
+msgstr "Navigation"
+
+#: src/routes/study/$deckId.tsx:97
+msgid "No cards in this deck!"
+msgstr "No cards in this deck!"
+
+#: src/routes/decks.tsx:139
+msgid "No decks yet"
+msgstr "No decks yet"
+
+#: src/utils/csv.ts:147
+msgid "No valid rows found (need at least 1 with two columns)."
+msgstr "No valid rows found (need at least 1 with two columns)."
+
+#: src/components/upload-modal.tsx:119
+msgid "Parsing CSV..."
+msgstr "Parsing CSV..."
+
+#: src/components/upload-modal.tsx:104
+msgid "Please choose a CSV file."
+msgstr "Please choose a CSV file."
+
+#: src/components/upload-modal.tsx:99
+msgid "Please enter a deck name."
+msgstr "Please enter a deck name."
+
+#: src/components/upload-modal.tsx:71
+#: src/components/upload-modal.tsx:90
+msgid "Please select a CSV or TXT file."
+msgstr "Please select a CSV or TXT file."
+
+#: src/utils/route-translations.ts:20
+msgid "Profile"
+msgstr "Profile"
+
+#: src/routes/decks.tsx:190
+msgid "Progress"
+msgstr "Progress"
+
+#: src/components/upload-modal.tsx:112
+msgid "Reading file..."
+msgstr "Reading file..."
+
+#: src/routes/decks.tsx:228
+#: src/routes/index.tsx:165
+msgid "Review All"
+msgstr "Review All"
+
+#: src/temp-route-translations.tsx:17
+#~ msgid "route.about"
+#~ msgstr "route.about"
+
+#: src/temp-route-translations.tsx:11
+#~ msgid "route.decks"
+#~ msgstr "route.decks"
+
+#: src/temp-route-translations.tsx:16
+#~ msgid "route.help"
+#~ msgstr "route.help"
+
+#: src/temp-route-translations.tsx:15
+#~ msgid "route.profile"
+#~ msgstr "route.profile"
+
+#: src/temp-route-translations.tsx:12
+#~ msgid "route.settings"
+#~ msgstr "route.settings"
+
+#: src/temp-route-translations.tsx:13
+#~ msgid "route.study"
+#~ msgstr "route.study"
+
+#: src/temp-route-translations.tsx:14
+#~ msgid "route.upload"
+#~ msgstr "route.upload"
+
+#: src/components/app-sidebar.tsx:35
+#: src/routes/settings.tsx:30
+#: src/utils/route-translations.ts:12
+msgid "Settings"
+msgstr "Settings"
+
+#: src/routes/index.tsx:128
+msgid "Spaced repetition system to optimize your learning"
+msgstr "Spaced repetition system to optimize your learning"
+
+#: src/components/upload-modal.tsx:144
+msgid "Storing cards..."
+msgstr "Storing cards..."
+
+#: src/routes/decks.tsx:228
+#: src/routes/index.tsx:165
+#: src/routes/study/$deckId.tsx:25
+#: src/routes/study/$deckId.tsx:32
+#: src/routes/study/$deckId.tsx:34
+#: src/routes/study/$deckId.tsx:51
+#: src/utils/route-translations.ts:16
+msgid "Study"
+msgstr "Study"
+
+#. placeholder {0}: deck.name
+#: src/components/upload-modal.tsx:161
+msgid "Successfully imported {count} cards to deck \"{0}\""
+msgstr "Successfully imported {count} cards to deck \"{0}\""
+
+#: src/routes/index.tsx:118
+msgid "Support for Anki-style CSV format with Front/Back columns"
+msgstr "Support for Anki-style CSV format with Front/Back columns"
+
+#: src/routes/index.tsx:122
+msgid "Swipe to Learn"
+msgstr "Swipe to Learn"
+
+#: src/components/theme-toggle.tsx:23
+msgid "Toggle theme"
+msgstr "Toggle theme"
+
+#: src/routes/index.tsx:127
+msgid "Track Progress"
+msgstr "Track Progress"
+
+#: src/routes/decks.tsx:120
+msgid "Try Again"
+msgstr "Try Again"
+
+#: src/utils/route-translations.ts:22
+msgid "Upload"
+msgstr "Upload"
+
+#: src/components/upload-modal.tsx:193
+msgid "Upload a CSV file with your flashcards. Supports Anki-style format."
+msgstr "Upload a CSV file with your flashcards. Supports Anki-style format."
+
+#: src/routes/index.tsx:117
+msgid "Upload CSV"
+msgstr "Upload CSV"
+
+#: src/components/upload-modal.tsx:176
+msgid "Upload failed."
+msgstr "Upload failed."
+
+#: src/components/upload-modal.tsx:190
+msgid "Upload Flashcard Deck"
+msgstr "Upload Flashcard Deck"
+
+#: src/routes/study/$deckId.tsx:99
+msgid "Upload some cards to start studying."
+msgstr "Upload some cards to start studying."
+
+#: src/routes/decks.tsx:145
+#: src/routes/index.tsx:109
+msgid "Upload Your First Deck"
+msgstr "Upload Your First Deck"
+
+#: src/routes/index.tsx:99
+msgid "Upload your first deck to begin your learning journey"
+msgstr "Upload your first deck to begin your learning journey"
+
+#: src/components/upload-modal.tsx:294
+msgid "Uploading..."
+msgstr "Uploading..."
+
+#: src/components/upload-modal.tsx:127
+msgid "Validating format..."
+msgstr "Validating format..."
+
+#: src/components/app-sidebar.tsx:80
+#: src/routes/settings.tsx:113
+msgid "Version 1.0.0"
+msgstr "Version 1.0.0"
+
+#: src/routes/index.tsx:86
+msgid "Welcome to LearnSwipe"
+msgstr "Welcome to LearnSwipe"
+
+#: src/routes/index.tsx:136
+msgid "Your Decks"
+msgstr "Your Decks"
+
+#: src/routes/index.tsx:88
+msgid "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
+msgstr "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
