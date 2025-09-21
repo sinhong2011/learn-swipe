@@ -22,7 +22,7 @@ msgstr "{0} 張卡片 • {1} 已掌握"
 #. placeholder {0}: deck.stats.total
 #. placeholder {1}: deck.stats.mastered
 #. placeholder {2}: deck.stats.due
-#: src/routes/index.tsx:154
+#: src/routes/index.tsx:152
 msgid "{0} cards • {1} mastered • {2} due"
 msgstr "{0} 張卡片 • {1} 已掌握 • {2} 到期"
 
@@ -37,7 +37,7 @@ msgid "About"
 msgstr "關於"
 
 #: src/routes/decks.tsx:132
-#: src/routes/index.tsx:140
+#: src/routes/index.tsx:138
 msgid "Add Deck"
 msgstr "新增牌組"
 
@@ -54,7 +54,7 @@ msgstr "您確定要刪除「{0}」嗎？此操作無法撤銷。"
 msgid "Blur Answer"
 msgstr "模糊答案"
 
-#: src/components/upload-modal.tsx:301
+#: src/components/upload-modal.tsx:321
 msgid "Cancel"
 msgstr "取消"
 
@@ -62,12 +62,12 @@ msgstr "取消"
 msgid "Create your first deck to start learning with spaced repetition."
 msgstr "建立您的第一個牌組，開始使用間隔重複學習。"
 
-#: src/components/upload-modal.tsx:137
-#: src/routes/upload.tsx:123
+#: src/components/upload-modal.tsx:140
+#: src/routes/upload.tsx:126
 msgid "Creating deck..."
 msgstr "正在建立牌組..."
 
-#: src/components/upload-modal.tsx:211
+#: src/components/upload-modal.tsx:221
 msgid "CSV File"
 msgstr "CSV 檔案"
 
@@ -84,7 +84,7 @@ msgstr "深色模式"
 msgid "Deck Management"
 msgstr "牌組管理"
 
-#: src/components/upload-modal.tsx:200
+#: src/components/upload-modal.tsx:206
 msgid "Deck Name"
 msgstr "牌組名稱"
 
@@ -97,11 +97,11 @@ msgstr "牌組"
 msgid "Delete"
 msgstr "刪除"
 
-#: src/components/upload-modal.tsx:233
+#: src/components/upload-modal.tsx:251
 msgid "Drop your CSV file here or click to browse"
 msgstr "將 CSV 檔案拖放到此處或點擊瀏覽"
 
-#: src/components/upload-modal.tsx:204
+#: src/components/upload-modal.tsx:211
 msgid "e.g. English Vocabulary"
 msgstr "例如：英語詞彙"
 
@@ -109,7 +109,7 @@ msgstr "例如：英語詞彙"
 #~ msgid "Edit src/routes/index.tsx and save to reload."
 #~ msgstr "編輯 src/routes/index.tsx 並保存以重新載入。"
 
-#: src/components/upload-modal.tsx:250
+#: src/components/upload-modal.tsx:270
 msgid "Expected format:"
 msgstr "預期格式："
 
@@ -129,7 +129,7 @@ msgstr "刪除牌組失敗"
 msgid "Failed to load decks"
 msgstr "載入牌組失敗"
 
-#: src/components/upload-modal.tsx:253
+#: src/components/upload-modal.tsx:273
 msgid "First column = Question, Second column = Answer. Additional columns stored as extra fields."
 msgstr "第一欄 = 問題，第二欄 = 答案。其他欄位儲存為額外欄位。"
 
@@ -141,7 +141,7 @@ msgstr "記憶卡學習"
 msgid "Flashcard Learning App"
 msgstr "閃卡學習應用程式"
 
-#: src/routes/index.tsx:97
+#: src/routes/index.tsx:95
 msgid "Get Started"
 msgstr "開始使用"
 
@@ -156,16 +156,16 @@ msgstr "開始使用"
 msgid "Home"
 msgstr "首頁"
 
-#: src/components/upload-modal.tsx:294
+#: src/components/upload-modal.tsx:314
 msgid "Import Deck"
 msgstr "匯入牌組"
 
 #. placeholder {0}: deck.name
-#: src/routes/upload.tsx:147
+#: src/routes/upload.tsx:150
 msgid "Imported {count} cards to deck \"{0}\""
 msgstr ""
 
-#: src/routes/index.tsx:124
+#: src/routes/index.tsx:122
 msgid "Intuitive mobile-first interface with smooth swipe gestures"
 msgstr "直觀的行動優先介面，具有流暢的滑動手勢"
 
@@ -194,7 +194,7 @@ msgid "Light appearance"
 msgstr "淺色外觀"
 
 #: src/routes/decks.tsx:107
-#: src/routes/index.tsx:74
+#: src/routes/index.tsx:72
 msgid "Loading decks..."
 msgstr "正在載入牌組..."
 
@@ -218,35 +218,35 @@ msgstr "此牌組中沒有卡片！"
 msgid "No decks yet"
 msgstr "尚無牌組"
 
-#: src/utils/csv.ts:147
+#: src/utils/csv.ts:142
 msgid "No valid rows found (need at least 1 with two columns)."
 msgstr "找不到有效的行（至少需要 1 行包含兩欄）。"
 
-#: src/components/upload-modal.tsx:119
-#: src/routes/upload.tsx:105
+#: src/components/upload-modal.tsx:122
+#: src/routes/upload.tsx:108
 msgid "Parsing CSV..."
 msgstr "正在解析 CSV..."
 
-#: src/routes/upload.tsx:90
+#: src/routes/upload.tsx:93
 msgid "Please choose a CSV file"
 msgstr ""
 
-#: src/components/upload-modal.tsx:104
+#: src/components/upload-modal.tsx:107
 msgid "Please choose a CSV file."
 msgstr "請選擇 CSV 檔案。"
 
-#: src/routes/upload.tsx:85
+#: src/routes/upload.tsx:88
 msgid "Please enter a deck name"
 msgstr ""
 
-#: src/components/upload-modal.tsx:99
+#: src/components/upload-modal.tsx:102
 msgid "Please enter a deck name."
 msgstr "請輸入牌組名稱。"
 
-#: src/components/upload-modal.tsx:71
-#: src/components/upload-modal.tsx:90
-#: src/routes/upload.tsx:57
-#: src/routes/upload.tsx:76
+#: src/components/upload-modal.tsx:74
+#: src/components/upload-modal.tsx:93
+#: src/routes/upload.tsx:60
+#: src/routes/upload.tsx:79
 msgid "Please select a CSV or TXT file."
 msgstr "請選擇 CSV 或 TXT 檔案。"
 
@@ -258,13 +258,13 @@ msgstr "請選擇 CSV 或 TXT 檔案。"
 msgid "Progress"
 msgstr "進度"
 
-#: src/components/upload-modal.tsx:112
-#: src/routes/upload.tsx:98
+#: src/components/upload-modal.tsx:115
+#: src/routes/upload.tsx:101
 msgid "Reading file..."
 msgstr "正在讀取檔案..."
 
 #: src/routes/decks.tsx:228
-#: src/routes/index.tsx:166
+#: src/routes/index.tsx:164
 msgid "Review All"
 msgstr "複習全部"
 
@@ -302,18 +302,18 @@ msgstr "複習全部"
 msgid "Settings"
 msgstr "設定"
 
-#: src/routes/index.tsx:129
+#: src/routes/index.tsx:127
 msgid "Spaced repetition system to optimize your learning"
 msgstr "間隔重複系統優化您的學習"
 
-#: src/components/upload-modal.tsx:144
-#: src/routes/upload.tsx:130
+#: src/components/upload-modal.tsx:147
+#: src/routes/upload.tsx:133
 msgid "Storing cards..."
 msgstr "正在儲存卡片..."
 
 #: src/components/app-breadcrumbs.tsx:30
 #: src/routes/decks.tsx:228
-#: src/routes/index.tsx:166
+#: src/routes/index.tsx:164
 #: src/routes/study/$deckId.tsx:25
 #: src/routes/study/$deckId.tsx:32
 #: src/routes/study/$deckId.tsx:34
@@ -322,15 +322,15 @@ msgid "Study"
 msgstr "學習"
 
 #. placeholder {0}: deck.name
-#: src/components/upload-modal.tsx:161
+#: src/components/upload-modal.tsx:164
 msgid "Successfully imported {count} cards to deck \"{0}\""
 msgstr "成功匯入 {count} 張卡片到牌組「{0}」"
 
-#: src/routes/index.tsx:119
+#: src/routes/index.tsx:117
 msgid "Support for Anki-style CSV format with Front/Back columns"
 msgstr "支援 Anki 風格的 CSV 格式，包含正面/背面欄位"
 
-#: src/routes/index.tsx:123
+#: src/routes/index.tsx:121
 msgid "Swipe to Learn"
 msgstr "滑動學習"
 
@@ -338,7 +338,7 @@ msgstr "滑動學習"
 msgid "Toggle theme"
 msgstr "切換主題"
 
-#: src/routes/index.tsx:128
+#: src/routes/index.tsx:126
 msgid "Track Progress"
 msgstr "追蹤進度"
 
@@ -350,21 +350,21 @@ msgstr "重試"
 #~ msgid "Upload"
 #~ msgstr "上傳"
 
-#: src/components/upload-modal.tsx:193
+#: src/components/upload-modal.tsx:196
 msgid "Upload a CSV file with your flashcards. Supports Anki-style format."
 msgstr "上傳包含您的記憶卡的 CSV 檔案。支援 Anki 風格格式。"
 
-#: src/routes/index.tsx:118
-#: src/routes/upload.tsx:29
+#: src/routes/index.tsx:116
+#: src/routes/upload.tsx:32
 msgid "Upload CSV"
 msgstr "上傳 CSV"
 
-#: src/components/upload-modal.tsx:176
-#: src/routes/upload.tsx:162
+#: src/components/upload-modal.tsx:179
+#: src/routes/upload.tsx:165
 msgid "Upload failed."
 msgstr "上傳失敗。"
 
-#: src/components/upload-modal.tsx:190
+#: src/components/upload-modal.tsx:193
 msgid "Upload Flashcard Deck"
 msgstr "上傳記憶卡牌組"
 
@@ -373,20 +373,20 @@ msgid "Upload some cards to start studying."
 msgstr "上傳一些卡片開始學習。"
 
 #: src/routes/decks.tsx:145
-#: src/routes/index.tsx:110
+#: src/routes/index.tsx:108
 msgid "Upload Your First Deck"
 msgstr "上傳您的第一個牌組"
 
-#: src/routes/index.tsx:100
+#: src/routes/index.tsx:98
 msgid "Upload your first deck to begin your learning journey"
 msgstr "上傳您的第一個牌組開始學習之旅"
 
-#: src/components/upload-modal.tsx:294
+#: src/components/upload-modal.tsx:314
 msgid "Uploading..."
 msgstr "正在上傳..."
 
-#: src/components/upload-modal.tsx:127
-#: src/routes/upload.tsx:113
+#: src/components/upload-modal.tsx:130
+#: src/routes/upload.tsx:116
 msgid "Validating format..."
 msgstr "正在驗證格式..."
 
@@ -395,14 +395,14 @@ msgstr "正在驗證格式..."
 msgid "Version 1.0.0"
 msgstr "版本 1.0.0"
 
-#: src/routes/index.tsx:87
+#: src/routes/index.tsx:85
 msgid "Welcome to LearnSwipe"
 msgstr "歡迎使用 LearnSwipe"
 
-#: src/routes/index.tsx:137
+#: src/routes/index.tsx:135
 msgid "Your Decks"
 msgstr "您的牌組"
 
-#: src/routes/index.tsx:89
+#: src/routes/index.tsx:87
 msgid "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
 msgstr "您的行動優先記憶卡學習夥伴。上傳您的 CSV 檔案，使用我們直觀的 Tinder 風格滑動介面開始學習。"

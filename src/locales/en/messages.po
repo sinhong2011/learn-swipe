@@ -22,7 +22,7 @@ msgstr "{0} cards • {1} mastered"
 #. placeholder {0}: deck.stats.total
 #. placeholder {1}: deck.stats.mastered
 #. placeholder {2}: deck.stats.due
-#: src/routes/index.tsx:154
+#: src/routes/index.tsx:152
 msgid "{0} cards • {1} mastered • {2} due"
 msgstr "{0} cards • {1} mastered • {2} due"
 
@@ -37,7 +37,7 @@ msgid "About"
 msgstr "About"
 
 #: src/routes/decks.tsx:132
-#: src/routes/index.tsx:140
+#: src/routes/index.tsx:138
 msgid "Add Deck"
 msgstr "Add Deck"
 
@@ -54,7 +54,7 @@ msgstr "Are you sure you want to delete \"{0}\"? This action cannot be undone."
 msgid "Blur Answer"
 msgstr "Blur Answer"
 
-#: src/components/upload-modal.tsx:301
+#: src/components/upload-modal.tsx:321
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -62,12 +62,12 @@ msgstr "Cancel"
 msgid "Create your first deck to start learning with spaced repetition."
 msgstr "Create your first deck to start learning with spaced repetition."
 
-#: src/components/upload-modal.tsx:137
-#: src/routes/upload.tsx:123
+#: src/components/upload-modal.tsx:140
+#: src/routes/upload.tsx:126
 msgid "Creating deck..."
 msgstr "Creating deck..."
 
-#: src/components/upload-modal.tsx:211
+#: src/components/upload-modal.tsx:221
 msgid "CSV File"
 msgstr "CSV File"
 
@@ -84,7 +84,7 @@ msgstr "Dark Mode"
 msgid "Deck Management"
 msgstr "Deck Management"
 
-#: src/components/upload-modal.tsx:200
+#: src/components/upload-modal.tsx:206
 msgid "Deck Name"
 msgstr "Deck Name"
 
@@ -97,11 +97,11 @@ msgstr "Decks"
 msgid "Delete"
 msgstr "Delete"
 
-#: src/components/upload-modal.tsx:233
+#: src/components/upload-modal.tsx:251
 msgid "Drop your CSV file here or click to browse"
 msgstr "Drop your CSV file here or click to browse"
 
-#: src/components/upload-modal.tsx:204
+#: src/components/upload-modal.tsx:211
 msgid "e.g. English Vocabulary"
 msgstr "e.g. English Vocabulary"
 
@@ -109,7 +109,7 @@ msgstr "e.g. English Vocabulary"
 #~ msgid "Edit src/routes/index.tsx and save to reload."
 #~ msgstr "Edit src/routes/index.tsx and save to reload."
 
-#: src/components/upload-modal.tsx:250
+#: src/components/upload-modal.tsx:270
 msgid "Expected format:"
 msgstr "Expected format:"
 
@@ -129,7 +129,7 @@ msgstr "Failed to delete deck"
 msgid "Failed to load decks"
 msgstr "Failed to load decks"
 
-#: src/components/upload-modal.tsx:253
+#: src/components/upload-modal.tsx:273
 msgid "First column = Question, Second column = Answer. Additional columns stored as extra fields."
 msgstr "First column = Question, Second column = Answer. Additional columns stored as extra fields."
 
@@ -141,7 +141,7 @@ msgstr "Flashcard Learning"
 msgid "Flashcard Learning App"
 msgstr "Flashcard Learning App"
 
-#: src/routes/index.tsx:97
+#: src/routes/index.tsx:95
 msgid "Get Started"
 msgstr "Get Started"
 
@@ -156,16 +156,16 @@ msgstr "Get Started"
 msgid "Home"
 msgstr "Home"
 
-#: src/components/upload-modal.tsx:294
+#: src/components/upload-modal.tsx:314
 msgid "Import Deck"
 msgstr "Import Deck"
 
 #. placeholder {0}: deck.name
-#: src/routes/upload.tsx:147
+#: src/routes/upload.tsx:150
 msgid "Imported {count} cards to deck \"{0}\""
 msgstr "Imported {count} cards to deck \"{0}\""
 
-#: src/routes/index.tsx:124
+#: src/routes/index.tsx:122
 msgid "Intuitive mobile-first interface with smooth swipe gestures"
 msgstr "Intuitive mobile-first interface with smooth swipe gestures"
 
@@ -194,7 +194,7 @@ msgid "Light appearance"
 msgstr "Light appearance"
 
 #: src/routes/decks.tsx:107
-#: src/routes/index.tsx:74
+#: src/routes/index.tsx:72
 msgid "Loading decks..."
 msgstr "Loading decks..."
 
@@ -218,35 +218,35 @@ msgstr "No cards in this deck!"
 msgid "No decks yet"
 msgstr "No decks yet"
 
-#: src/utils/csv.ts:147
+#: src/utils/csv.ts:142
 msgid "No valid rows found (need at least 1 with two columns)."
 msgstr "No valid rows found (need at least 1 with two columns)."
 
-#: src/components/upload-modal.tsx:119
-#: src/routes/upload.tsx:105
+#: src/components/upload-modal.tsx:122
+#: src/routes/upload.tsx:108
 msgid "Parsing CSV..."
 msgstr "Parsing CSV..."
 
-#: src/routes/upload.tsx:90
+#: src/routes/upload.tsx:93
 msgid "Please choose a CSV file"
 msgstr "Please choose a CSV file"
 
-#: src/components/upload-modal.tsx:104
+#: src/components/upload-modal.tsx:107
 msgid "Please choose a CSV file."
 msgstr "Please choose a CSV file."
 
-#: src/routes/upload.tsx:85
+#: src/routes/upload.tsx:88
 msgid "Please enter a deck name"
 msgstr "Please enter a deck name"
 
-#: src/components/upload-modal.tsx:99
+#: src/components/upload-modal.tsx:102
 msgid "Please enter a deck name."
 msgstr "Please enter a deck name."
 
-#: src/components/upload-modal.tsx:71
-#: src/components/upload-modal.tsx:90
-#: src/routes/upload.tsx:57
-#: src/routes/upload.tsx:76
+#: src/components/upload-modal.tsx:74
+#: src/components/upload-modal.tsx:93
+#: src/routes/upload.tsx:60
+#: src/routes/upload.tsx:79
 msgid "Please select a CSV or TXT file."
 msgstr "Please select a CSV or TXT file."
 
@@ -258,13 +258,13 @@ msgstr "Please select a CSV or TXT file."
 msgid "Progress"
 msgstr "Progress"
 
-#: src/components/upload-modal.tsx:112
-#: src/routes/upload.tsx:98
+#: src/components/upload-modal.tsx:115
+#: src/routes/upload.tsx:101
 msgid "Reading file..."
 msgstr "Reading file..."
 
 #: src/routes/decks.tsx:228
-#: src/routes/index.tsx:166
+#: src/routes/index.tsx:164
 msgid "Review All"
 msgstr "Review All"
 
@@ -302,18 +302,18 @@ msgstr "Review All"
 msgid "Settings"
 msgstr "Settings"
 
-#: src/routes/index.tsx:129
+#: src/routes/index.tsx:127
 msgid "Spaced repetition system to optimize your learning"
 msgstr "Spaced repetition system to optimize your learning"
 
-#: src/components/upload-modal.tsx:144
-#: src/routes/upload.tsx:130
+#: src/components/upload-modal.tsx:147
+#: src/routes/upload.tsx:133
 msgid "Storing cards..."
 msgstr "Storing cards..."
 
 #: src/components/app-breadcrumbs.tsx:30
 #: src/routes/decks.tsx:228
-#: src/routes/index.tsx:166
+#: src/routes/index.tsx:164
 #: src/routes/study/$deckId.tsx:25
 #: src/routes/study/$deckId.tsx:32
 #: src/routes/study/$deckId.tsx:34
@@ -322,15 +322,15 @@ msgid "Study"
 msgstr "Study"
 
 #. placeholder {0}: deck.name
-#: src/components/upload-modal.tsx:161
+#: src/components/upload-modal.tsx:164
 msgid "Successfully imported {count} cards to deck \"{0}\""
 msgstr "Successfully imported {count} cards to deck \"{0}\""
 
-#: src/routes/index.tsx:119
+#: src/routes/index.tsx:117
 msgid "Support for Anki-style CSV format with Front/Back columns"
 msgstr "Support for Anki-style CSV format with Front/Back columns"
 
-#: src/routes/index.tsx:123
+#: src/routes/index.tsx:121
 msgid "Swipe to Learn"
 msgstr "Swipe to Learn"
 
@@ -338,7 +338,7 @@ msgstr "Swipe to Learn"
 msgid "Toggle theme"
 msgstr "Toggle theme"
 
-#: src/routes/index.tsx:128
+#: src/routes/index.tsx:126
 msgid "Track Progress"
 msgstr "Track Progress"
 
@@ -350,21 +350,21 @@ msgstr "Try Again"
 #~ msgid "Upload"
 #~ msgstr "Upload"
 
-#: src/components/upload-modal.tsx:193
+#: src/components/upload-modal.tsx:196
 msgid "Upload a CSV file with your flashcards. Supports Anki-style format."
 msgstr "Upload a CSV file with your flashcards. Supports Anki-style format."
 
-#: src/routes/index.tsx:118
-#: src/routes/upload.tsx:29
+#: src/routes/index.tsx:116
+#: src/routes/upload.tsx:32
 msgid "Upload CSV"
 msgstr "Upload CSV"
 
-#: src/components/upload-modal.tsx:176
-#: src/routes/upload.tsx:162
+#: src/components/upload-modal.tsx:179
+#: src/routes/upload.tsx:165
 msgid "Upload failed."
 msgstr "Upload failed."
 
-#: src/components/upload-modal.tsx:190
+#: src/components/upload-modal.tsx:193
 msgid "Upload Flashcard Deck"
 msgstr "Upload Flashcard Deck"
 
@@ -373,20 +373,20 @@ msgid "Upload some cards to start studying."
 msgstr "Upload some cards to start studying."
 
 #: src/routes/decks.tsx:145
-#: src/routes/index.tsx:110
+#: src/routes/index.tsx:108
 msgid "Upload Your First Deck"
 msgstr "Upload Your First Deck"
 
-#: src/routes/index.tsx:100
+#: src/routes/index.tsx:98
 msgid "Upload your first deck to begin your learning journey"
 msgstr "Upload your first deck to begin your learning journey"
 
-#: src/components/upload-modal.tsx:294
+#: src/components/upload-modal.tsx:314
 msgid "Uploading..."
 msgstr "Uploading..."
 
-#: src/components/upload-modal.tsx:127
-#: src/routes/upload.tsx:113
+#: src/components/upload-modal.tsx:130
+#: src/routes/upload.tsx:116
 msgid "Validating format..."
 msgstr "Validating format..."
 
@@ -395,14 +395,14 @@ msgstr "Validating format..."
 msgid "Version 1.0.0"
 msgstr "Version 1.0.0"
 
-#: src/routes/index.tsx:87
+#: src/routes/index.tsx:85
 msgid "Welcome to LearnSwipe"
 msgstr "Welcome to LearnSwipe"
 
-#: src/routes/index.tsx:137
+#: src/routes/index.tsx:135
 msgid "Your Decks"
 msgstr "Your Decks"
 
-#: src/routes/index.tsx:89
+#: src/routes/index.tsx:87
 msgid "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
 msgstr "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
