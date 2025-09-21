@@ -17,7 +17,8 @@
       "!**/node_modules",
       "!**/public/sw.js",
       "!**/public/swe-worker.js",
-      "!**/routeTree.gen.ts"
+      "!**/routeTree.gen.ts",
+      "!**/src/locales/**/*.mjs"
     ]
   },
   "formatter": {
