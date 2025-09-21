@@ -9,7 +9,7 @@ import { routeTree } from "./routeTree.gen.ts";
 import "@/assets/styles/global.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { useAppStore } from "@/store/useAppStore";
-import { i18n } from "./i18n";
+import { activateLocale, i18n } from "./i18n";
 import reportWebVitals from "./reportWebVitals.ts";
 
 // Create a new router instance
@@ -32,9 +32,10 @@ declare module "@tanstack/react-router" {
 // Initialize language from stored preference
 const storedLanguage = useAppStore.getState().language;
 if (storedLanguage && storedLanguage !== i18n.locale) {
-	i18n.activate(storedLanguage);
-	// Update HTML lang attribute on initial load
-	document.documentElement.lang = storedLanguage;
+	// Use async activation to load translations dynamically
+	activateLocale(storedLanguage).catch((error) => {
+		console.error("Failed to activate stored language:", error);
+	});
 }
 
 // Render the app

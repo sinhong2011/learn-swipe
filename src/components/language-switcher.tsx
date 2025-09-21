@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react/macro";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
 	Select,
 	SelectContent,
@@ -8,34 +8,42 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { useAppStore } from "@/store/useAppStore";
-import { locales } from "../i18n";
+import { activateLocale, locales } from "../i18n";
 
 export default function LanguageSwitcher() {
 	const { i18n } = useLingui();
 	const { language, setLanguage } = useAppStore();
+	const [isLoading, setIsLoading] = useState(false);
 
 	// Initialize i18n with stored language preference on mount
 	useEffect(() => {
 		if (language && language !== i18n.locale) {
-			i18n.activate(language);
-		}
-		// Update HTML lang attribute
-		if (language) {
-			document.documentElement.lang = language;
+			setIsLoading(true);
+			activateLocale(language).finally(() => setIsLoading(false));
 		}
 	}, [language, i18n]);
 
-	const handleLanguageChange = (locale: string) => {
-		// Update both the store and i18n
-		setLanguage(locale);
-		i18n.activate(locale);
-		// Update HTML lang attribute
-		document.documentElement.lang = locale;
+	const handleLanguageChange = async (locale: string) => {
+		setIsLoading(true);
+		try {
+			// Update the store first
+			setLanguage(locale);
+			// Then activate the locale (this will load translations if needed)
+			await activateLocale(locale);
+		} catch (error) {
+			console.error("Failed to change language:", error);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (
 		<div className="flex gap-2 items-center">
-			<Select value={language} onValueChange={handleLanguageChange}>
+			<Select
+				value={language}
+				onValueChange={handleLanguageChange}
+				disabled={isLoading}
+			>
 				<SelectTrigger className="w-[120px] text-sm">
 					<SelectValue />
 				</SelectTrigger>
