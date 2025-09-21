@@ -12,7 +12,7 @@ pre-commit:
     # Lint and format check
     lint:
       glob: "*.{js,jsx,ts,tsx,json,css}"
-      run: bun run check
+      run: bun x biome check --no-errors-on-unmatched {staged_files}
       stage_fixed: true
       fail_text: "Linting failed. Run 'bun run check --write' to fix issues."
 
