@@ -46,11 +46,15 @@ pre-push:
     # E2E tests (only run if e2e directory exists and has tests)
     e2e:
       run: |
-        if [ -d "e2e" ] && [ "$(find e2e -name '*.spec.ts' | wc -l)" -gt 0 ]; then
-          echo "Running E2E tests..."
-          bun run test:e2e
+        if [ -d "e2e" ]; then
+          if [ -n "$(find e2e -name '*.spec.ts' 2>/dev/null)" ]; then
+            echo "Running E2E tests..."
+            bun run test:e2e
+          else
+            echo "No E2E tests found, skipping..."
+          fi
         else
-          echo "No E2E tests found, skipping..."
+          echo "No e2e directory found, skipping..."
         fi
       fail_text: "E2E tests failed. Fix failing tests before pushing."
 
