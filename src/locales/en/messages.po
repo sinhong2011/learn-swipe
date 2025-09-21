@@ -31,8 +31,8 @@ msgstr "{0} cards • {1} mastered • {2} due"
 msgid "{0} due"
 msgstr "{0} due"
 
+#: src/components/app-breadcrumbs.tsx:32
 #: src/routes/settings.tsx:99
-#: src/utils/route-translations.ts:19
 msgid "About"
 msgstr "About"
 
@@ -87,8 +87,8 @@ msgstr "Deck Management"
 msgid "Deck Name"
 msgstr "Deck Name"
 
+#: src/components/app-breadcrumbs.tsx:28
 #: src/components/app-sidebar.tsx:29
-#: src/utils/route-translations.ts:13
 msgid "Decks"
 msgstr "Decks"
 
@@ -145,14 +145,13 @@ msgid "Get Started"
 msgstr "Get Started"
 
 #: src/utils/route-translations.ts:21
-msgid "Help"
-msgstr "Help"
+#~ msgid "Help"
+#~ msgstr "Help"
 
-#: src/components/app-breadcrumbs.tsx:23
+#: src/components/app-breadcrumbs.tsx:43
 #: src/components/app-sidebar.tsx:23
 #: src/routes/index.tsx:30
 #: src/routes/study/$deckId.tsx:50
-#: src/utils/route-translations.ts:11
 msgid "Home"
 msgstr "Home"
 
@@ -235,8 +234,8 @@ msgid "Please select a CSV or TXT file."
 msgstr "Please select a CSV or TXT file."
 
 #: src/utils/route-translations.ts:20
-msgid "Profile"
-msgstr "Profile"
+#~ msgid "Profile"
+#~ msgstr "Profile"
 
 #: src/routes/decks.tsx:190
 msgid "Progress"
@@ -279,9 +278,9 @@ msgstr "Review All"
 #~ msgid "route.upload"
 #~ msgstr "route.upload"
 
+#: src/components/app-breadcrumbs.tsx:26
 #: src/components/app-sidebar.tsx:35
 #: src/routes/settings.tsx:30
-#: src/utils/route-translations.ts:12
 msgid "Settings"
 msgstr "Settings"
 
@@ -293,13 +292,13 @@ msgstr "Spaced repetition system to optimize your learning"
 msgid "Storing cards..."
 msgstr "Storing cards..."
 
+#: src/components/app-breadcrumbs.tsx:30
 #: src/routes/decks.tsx:228
 #: src/routes/index.tsx:165
 #: src/routes/study/$deckId.tsx:25
 #: src/routes/study/$deckId.tsx:32
 #: src/routes/study/$deckId.tsx:34
 #: src/routes/study/$deckId.tsx:51
-#: src/utils/route-translations.ts:16
 msgid "Study"
 msgstr "Study"
 
@@ -329,8 +328,8 @@ msgid "Try Again"
 msgstr "Try Again"
 
 #: src/utils/route-translations.ts:22
-msgid "Upload"
-msgstr "Upload"
+#~ msgid "Upload"
+#~ msgstr "Upload"
 
 #: src/components/upload-modal.tsx:193
 msgid "Upload a CSV file with your flashcards. Supports Anki-style format."

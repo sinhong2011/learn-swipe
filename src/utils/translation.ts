@@ -88,7 +88,7 @@ export function getRouteTranslation(segment: string): string {
 export function hasTranslation(key: string): boolean {
 	try {
 		const translated = i18n._(key);
-		return translated && translated !== key;
+		return !!translated && translated !== key;
 	} catch {
 		return false;
 	}

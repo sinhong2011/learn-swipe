@@ -8,7 +8,6 @@ import {
 	SettingsContainer,
 	SettingsContent,
 	SettingsGroup,
-	SettingsHeader,
 	SettingsRow,
 	SettingsSection,
 	SettingsToggleRow,

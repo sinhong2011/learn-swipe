@@ -31,6 +31,7 @@ msgstr "{0} 張卡片 • {1} 已掌握 • {2} 到期"
 msgid "{0} due"
 msgstr "{0} 到期"
 
+#: src/components/app-breadcrumbs.tsx:32
 #: src/routes/settings.tsx:99
 msgid "About"
 msgstr "關於"
@@ -86,6 +87,7 @@ msgstr "牌組管理"
 msgid "Deck Name"
 msgstr "牌組名稱"
 
+#: src/components/app-breadcrumbs.tsx:28
 #: src/components/app-sidebar.tsx:29
 msgid "Decks"
 msgstr "牌組"
@@ -142,7 +144,11 @@ msgstr "閃卡學習應用程式"
 msgid "Get Started"
 msgstr "開始使用"
 
-#: src/components/app-breadcrumbs.tsx:23
+#: src/utils/route-translations.ts:21
+#~ msgid "Help"
+#~ msgstr "幫助"
+
+#: src/components/app-breadcrumbs.tsx:43
 #: src/components/app-sidebar.tsx:23
 #: src/routes/index.tsx:30
 #: src/routes/study/$deckId.tsx:50
@@ -227,6 +233,10 @@ msgstr "請輸入牌組名稱。"
 msgid "Please select a CSV or TXT file."
 msgstr "請選擇 CSV 或 TXT 檔案。"
 
+#: src/utils/route-translations.ts:20
+#~ msgid "Profile"
+#~ msgstr "個人資料"
+
 #: src/routes/decks.tsx:190
 msgid "Progress"
 msgstr "進度"
@@ -268,6 +278,7 @@ msgstr "複習全部"
 #~ msgid "route.upload"
 #~ msgstr "上傳"
 
+#: src/components/app-breadcrumbs.tsx:26
 #: src/components/app-sidebar.tsx:35
 #: src/routes/settings.tsx:30
 msgid "Settings"
@@ -281,6 +292,7 @@ msgstr "間隔重複系統優化您的學習"
 msgid "Storing cards..."
 msgstr "正在儲存卡片..."
 
+#: src/components/app-breadcrumbs.tsx:30
 #: src/routes/decks.tsx:228
 #: src/routes/index.tsx:165
 #: src/routes/study/$deckId.tsx:25
@@ -314,6 +326,10 @@ msgstr "追蹤進度"
 #: src/routes/decks.tsx:120
 msgid "Try Again"
 msgstr "重試"
+
+#: src/utils/route-translations.ts:22
+#~ msgid "Upload"
+#~ msgstr "上傳"
 
 #: src/components/upload-modal.tsx:193
 msgid "Upload a CSV file with your flashcards. Supports Anki-style format."
@@ -368,15 +384,3 @@ msgstr "您的牌組"
 #: src/routes/index.tsx:88
 msgid "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
 msgstr "您的行動優先記憶卡學習夥伴。上傳您的 CSV 檔案，使用我們直觀的 Tinder 風格滑動介面開始學習。"
-
-#: src/utils/route-translations.ts:21
-msgid "Help"
-msgstr "幫助"
-
-#: src/utils/route-translations.ts:20
-msgid "Profile"
-msgstr "個人資料"
-
-#: src/utils/route-translations.ts:22
-msgid "Upload"
-msgstr "上傳"
