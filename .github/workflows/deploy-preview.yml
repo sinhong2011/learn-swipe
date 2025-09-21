@@ -48,7 +48,8 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=learn-swipe --compatibility-date=2024-12-21
+          # compatibility_date is configured in wrangler.toml; the CLI flag is not supported for pages deploy
+          command: pages deploy dist --project-name=learn-swipe
 
       - name: Comment Preview URL
         uses: actions/github-script@v7
