@@ -1,0 +1,58 @@
+name = "learn-swipe"
+compatibility_date = "2024-12-21"
+
+# Cloudflare Pages configuration
+[env.production]
+name = "learn-swipe"
+compatibility_date = "2024-12-21"
+
+[env.preview]
+name = "learn-swipe-preview"
+compatibility_date = "2024-12-21"
+
+# Pages configuration
+pages_build_output_dir = "dist"
+
+# SPA routing configuration
+[[pages_config.redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+# Security headers
+[[pages_config.headers]]
+for = "/*"
+[pages_config.headers.values]
+X-Frame-Options = "DENY"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache headers for static assets
+[[pages_config.headers]]
+for = "/assets/*"
+[pages_config.headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache headers for service worker
+[[pages_config.headers]]
+for = "/sw.js"
+[pages_config.headers.values]
+Cache-Control = "public, max-age=0, must-revalidate"
+
+# Cache headers for manifest
+[[pages_config.headers]]
+for = "/manifest.json"
+[pages_config.headers.values]
+Cache-Control = "public, max-age=86400"
+
+# PWA related files
+[[pages_config.headers]]
+for = "/*.png"
+[pages_config.headers.values]
+Cache-Control = "public, max-age=86400"
+
+[[pages_config.headers]]
+for = "/favicon.ico"
+[pages_config.headers.values]
+Cache-Control = "public, max-age=86400"

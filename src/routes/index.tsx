@@ -1,4 +1,3 @@
-import { getSerwist } from "virtual:serwist";
 import { useLingui } from "@lingui/react/macro";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { BarChart3, BookOpen, Play, Upload } from "lucide-react";
@@ -30,19 +29,21 @@ function App() {
 	useDocumentTitle(`${t`Home`} - LearnSwipe`);
 
 	useEffect(() => {
-		const loadSerwist = async () => {
-			if ("serviceWorker" in navigator) {
-				const serwist = await getSerwist();
+		// Service worker registration only in production
+		if (import.meta.env.PROD) {
+			const loadSerwist = async () => {
+				try {
+					const { registerServiceWorker } = await import(
+						"@/lib/service-worker"
+					);
+					await registerServiceWorker();
+				} catch (error) {
+					console.warn("Service worker registration failed:", error);
+				}
+			};
 
-				serwist?.addEventListener("installed", () => {
-					console.log("Serwist installed!");
-				});
-
-				void serwist?.register();
-			}
-		};
-
-		loadSerwist();
+			loadSerwist();
+		}
 	}, []);
 
 	useEffect(() => {

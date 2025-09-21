@@ -1,6 +1,7 @@
 {
 	"name": "Learn Swipe",
 	"short_name": "LearnSwipe",
+	"version": "0.1.0",
 	"icons": [
 		{
 			"src": "/icons/android-chrome-192x192.png",

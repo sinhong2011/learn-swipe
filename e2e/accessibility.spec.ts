@@ -47,21 +47,19 @@ test.describe("Accessibility Tests", () => {
 	test("should have keyboard navigation support", async ({ page }) => {
 		await page.goto("/upload");
 
-		// Test tab navigation through form elements
-		await page.keyboard.press("Tab");
+		const deckNameInput = page.locator(
+			'input[placeholder*="English Vocabulary"]',
+		);
+		const fileInput = page.locator('input[type="file"]');
 
-		// Should focus on first interactive element
-		const focusedElement = page.locator(":focus");
-		await expect(focusedElement).toBeVisible();
-
-		// Continue tabbing through elements
+		// Focus deck name, then tab to file input, then to Cancel button
+		await deckNameInput.focus();
+		await expect(deckNameInput).toBeFocused();
 		await page.keyboard.press("Tab");
+		await expect(fileInput).toBeFocused();
 		await page.keyboard.press("Tab");
-
-		// Should be able to activate button with Enter/Space
-		const importButton = page.locator('button:has-text("Import")');
-		await importButton.focus();
-		await expect(importButton).toBeFocused();
+		const cancelButton = page.locator('button:has-text("Cancel")');
+		await expect(cancelButton).toBeFocused();
 	});
 
 	test("should have proper button accessibility in study interface", async ({
@@ -96,25 +94,13 @@ test.describe("Accessibility Tests", () => {
 		await page.click('button:has-text("Import")');
 		await page.waitForURL(/\/study\/.*/);
 
-		// Check study interface accessibility
-		const knowButton = page.locator('button:has-text("Know")');
-		const dontKnowButton = page.locator('button:has-text("Don\'t")');
-		const revealButton = page.locator('button:has-text("Reveal")');
-
-		// Buttons should be focusable and have proper text
-		await expect(knowButton).toBeVisible();
-		await expect(dontKnowButton).toBeVisible();
-		await expect(revealButton).toBeVisible();
-
-		// Test keyboard activation
-		await knowButton.focus();
-		await expect(knowButton).toBeFocused();
-
-		await dontKnowButton.focus();
-		await expect(dontKnowButton).toBeFocused();
-
-		await revealButton.focus();
-		await expect(revealButton).toBeFocused();
+		// Check study interface accessibility (Zen mode)
+		const blurLabel = page.locator("text=Blur Answer");
+		await expect(blurLabel).toBeVisible();
+		const switchEl = page.getByRole("switch").first();
+		await expect(switchEl).toBeVisible();
+		await switchEl.focus();
+		await expect(switchEl).toBeFocused();
 	});
 
 	test("should have sufficient color contrast", async ({ page }) => {
@@ -168,15 +154,10 @@ test.describe("Accessibility Tests", () => {
 		await page.click('button:has-text("Import")');
 		await page.waitForURL(/\/study\/.*/);
 
-		// Test that focus is managed properly when revealing/hiding answers
-		const revealButton = page.locator('button:has-text("Reveal")');
-		await revealButton.click();
-
-		// After revealing, hide button should be focusable
-		const hideButton = page.locator('button:has-text("Hide")');
-		await expect(hideButton).toBeVisible();
-
-		await hideButton.focus();
-		await expect(hideButton).toBeFocused();
+		// Test that focus is managed properly when toggling blur
+		const switchEl = page.getByRole("switch").first();
+		await switchEl.click();
+		await expect(switchEl).toBeFocused();
+		await expect(switchEl).toHaveAttribute("aria-checked", "true");
 	});
 });

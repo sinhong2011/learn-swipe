@@ -5,27 +5,30 @@ import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import viteReact from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	server: {
 		port: 5173,
 	},
 	plugins: [
-		tsconfigPaths(),
 		tanstackRouter({ autoCodeSplitting: true }),
 		viteReact({
 			plugins: [["@lingui/swc-plugin", {}]],
 		}),
 		tailwindcss(),
-		serwist({
-			swSrc: "src/sw.ts",
-			swDest: "sw.js",
-			globDirectory: "dist",
-			injectionPoint: "self.__SW_MANIFEST",
-			rollupFormat: "iife",
-		}),
+		// Only include Serwist in production builds
+		...(mode === "production"
+			? [
+					serwist({
+						swSrc: "src/sw.ts",
+						swDest: "sw.js",
+						globDirectory: "dist",
+						injectionPoint: "self.__SW_MANIFEST",
+						rollupFormat: "iife",
+					}),
+				]
+			: []),
 		lingui(),
 	],
 	resolve: {
@@ -42,12 +45,6 @@ export default defineConfig({
 
 					// TanStack Router
 					router: ["@tanstack/react-router", "@tanstack/router-plugin"],
-
-					// TanStack DevTools (separate chunk for dev tools)
-					devtools: [
-						"@tanstack/react-devtools",
-						"@tanstack/react-router-devtools",
-					],
 
 					// Radix UI components
 					radix: [
@@ -87,4 +84,4 @@ export default defineConfig({
 			},
 		},
 	},
-});
+}));

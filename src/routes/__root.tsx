@@ -18,17 +18,19 @@ export const Route = createRootRoute({
 					<Outlet />
 				</main>
 			</SidebarInset>
-			<TanStackDevtools
-				config={{
-					position: "bottom-left",
-				}}
-				plugins={[
-					{
-						name: "Tanstack Router",
-						render: <TanStackRouterDevtoolsPanel />,
-					},
-				]}
-			/>
+			{import.meta.env.DEV && (
+				<TanStackDevtools
+					config={{
+						position: "bottom-left",
+					}}
+					plugins={[
+						{
+							name: "Tanstack Router",
+							render: <TanStackRouterDevtoolsPanel />,
+						},
+					]}
+				/>
+			)}
 		</SidebarProvider>
 	),
 });

@@ -1,6 +1,6 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { expect, test } from "@playwright/test";
-import path from "path";
-import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,27 +38,23 @@ test.describe("CSV Upload Feature", () => {
 
 		// Should navigate to study page
 		await page.waitForURL(/\/study\/.*/);
-		await expect(page.locator("h1")).toContainText("Study");
+		await expect(page.locator("h1")).toContainText("5");
 	});
 
-	test("should show error for empty deck name", async ({ page }) => {
+	test("should keep Import disabled for empty deck name", async ({ page }) => {
 		await page.goto("/upload");
 
-		// Try to import without deck name
-		await page.click('button:has-text("Import")');
-
-		// Should show error
-		await expect(page.locator("text=Please enter a deck name")).toBeVisible();
+		// Import should be disabled when required fields are missing
+		const importBtn = page.locator('button:has-text("Import")');
+		await expect(importBtn).toBeDisabled();
 	});
 
-	test("should show error for missing file", async ({ page }) => {
+	test("should keep Import disabled when file is missing", async ({ page }) => {
 		await page.goto("/upload");
 
 		// Fill deck name but no file
 		await page.fill('input[placeholder*="English Vocabulary"]', "Test Deck");
-		await page.click('button:has-text("Import")');
-
-		// Should show error
-		await expect(page.locator("text=Please choose a CSV file")).toBeVisible();
+		const importBtn = page.locator('button:has-text("Import")');
+		await expect(importBtn).toBeDisabled();
 	});
 });

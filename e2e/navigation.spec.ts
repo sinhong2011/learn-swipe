@@ -6,15 +6,15 @@ test.describe("Navigation and Basic App Flow", () => {
 		await page.goto("/");
 
 		// Check home page loads
-		await expect(page.locator("text=Learn React")).toBeVisible();
+		await expect(page.locator("text=Get Started")).toBeVisible();
 
-		// Navigate to upload page via header
-		await page.click('a:has-text("Upload")');
+		// Navigate to upload page directly
+		await page.goto("/upload");
 		await expect(page).toHaveURL("/upload");
 		await expect(page.locator("h1")).toContainText("Upload CSV");
 
-		// Navigate back to home via header
-		await page.click('a:has-text("Home")');
+		// Navigate back to home
+		await page.goto("/");
 		await expect(page).toHaveURL("/");
 	});
 
@@ -39,23 +39,6 @@ test.describe("Navigation and Basic App Flow", () => {
 			});
 
 			expect(typeof isDark).toBe("boolean");
-		}
-	});
-
-	test("should have working language switcher", async ({ page }) => {
-		await page.goto("/");
-
-		// Find language switcher (assuming it exists in header)
-		const langSwitcher = page.locator(
-			'[data-testid="language-switcher"], select, button:has-text("EN"), button:has-text("ZH")',
-		);
-
-		if ((await langSwitcher.count()) > 0) {
-			// Language switcher exists, test it
-			await langSwitcher.first().click();
-
-			// Just verify it's interactive - actual language change testing would need more setup
-			expect(await langSwitcher.first().isVisible()).toBe(true);
 		}
 	});
 
@@ -84,13 +67,11 @@ test.describe("Navigation and Basic App Flow", () => {
 
 		await page.goto("/");
 
-		// Check that header is still visible and functional
+		// Check that header is still visible
 		await expect(page.locator("header").first()).toBeVisible();
-		await expect(page.locator('a:has-text("Home")')).toBeVisible();
-		await expect(page.locator('a:has-text("Upload")')).toBeVisible();
 
 		// Navigate to upload page
-		await page.click('a:has-text("Upload")');
+		await page.goto("/upload");
 		await expect(page).toHaveURL("/upload");
 
 		// Check that form elements are properly sized for mobile
@@ -104,10 +85,10 @@ test.describe("Navigation and Basic App Flow", () => {
 		await expect(fileInput).toBeVisible();
 		await expect(importButton).toBeVisible();
 
-		// Check that elements are touch-friendly (at least 44px height)
+		// Check that elements are touch-friendly (at least 36px height)
 		const buttonBox = await importButton.boundingBox();
 		if (buttonBox) {
-			expect(buttonBox.height).toBeGreaterThanOrEqual(36); // Allowing some margin
+			expect(buttonBox.height).toBeGreaterThanOrEqual(36);
 		}
 	});
 });

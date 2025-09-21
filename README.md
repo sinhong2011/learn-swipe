@@ -1,44 +1,75 @@
-Welcome to your new TanStack app! 
+# LearnSwipe 🚀
 
-# Getting Started
+A Tinder-like flashcard learning app with spaced repetition, built with React and TypeScript.
+
+## 📚 Documentation
+
+- **[Git Workflow Guide](docs/git-workflow.md)** - Development workflow with GitHub Flow
+- **[Deployment Guide](docs/deployment.md)** - Cloudflare Pages deployment setup
+- **[Project Description](docs/project_description.md)** - Detailed project overview
+
+## 🚀 Getting Started
 
 To run this application:
 
 ```bash
 bun install
-bunx --bun run start
+bun run dev
 ```
 
-# Building For Production
-
-To build this application for production:
+## 🏗️ Building For Production
 
 ```bash
-bunx --bun run build
+bun run build
 ```
 
-## Testing
-
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+## 🚀 Deployment
 
 ```bash
-bunx --bun run test
+# Deploy to preview
+bun run deploy:preview
+
+# Deploy to production
+bun run deploy:production
 ```
 
-## Styling
-
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-
-## Linting & Formatting
-
-This project uses [Biome](https://biomejs.dev/) for linting and formatting. The following scripts are available:
-
+## 🧪 Testing
 
 ```bash
-bunx --bun run lint
-bunx --bun run format
-bunx --bun run check
+# Unit tests
+bun run test
+
+# E2E tests
+bun run test:e2e
+
+# E2E tests with UI
+bun run test:e2e:ui
+```
+
+## 🎨 Code Quality
+
+```bash
+# Lint and format
+bun run check
+
+# Format only
+bun run format
+
+# Lint only
+bun run lint
+```
+
+## 🌍 Internationalization
+
+```bash
+# Extract and compile translations
+bun run translate
+
+# Extract only
+bun run extract
+
+# Compile only
+bun run compile
 ```
 
 
@@ -292,10 +323,34 @@ Once we've created the derived store we can use it in the `App` component just l
 
 You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
 
-# Demo files
+## 🔄 Development Workflow
 
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
+This project uses **GitHub Flow** with automated releases:
 
-# Learn More
+1. **Create feature branch** from `main`
+2. **Make changes** with [conventional commits](https://www.conventionalcommits.org/)
+3. **Open Pull Request** → triggers CI + preview deployment
+4. **Merge to main** → Release-Please creates release PR
+5. **Merge release PR** → automatic production deployment
 
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+### Conventional Commit Examples
+
+```bash
+git commit -m "feat: add dark mode toggle"      # Minor release
+git commit -m "fix: resolve card navigation"    # Patch release
+git commit -m "feat!: redesign user interface"  # Major release
+```
+
+See **[Git Workflow Guide](docs/git-workflow.md)** for detailed instructions.
+
+## 📦 Tech Stack
+
+- **Frontend**: React + TypeScript + Vite
+- **Routing**: TanStack Router
+- **State**: Zustand + IndexedDB (Dexie)
+- **UI**: Shadcn UI + Tailwind CSS
+- **PWA**: Serwist (service worker)
+- **i18n**: Lingui
+- **Testing**: Vitest + Playwright
+- **Deployment**: Cloudflare Pages + Wrangler
+- **CI/CD**: GitHub Actions + Release-Please
