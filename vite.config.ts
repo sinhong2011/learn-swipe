@@ -33,4 +33,58 @@ export default defineConfig({
 			"@": resolve(__dirname, "./src"),
 		},
 	},
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					// React core
+					react: ["react", "react-dom"],
+
+					// TanStack Router
+					router: ["@tanstack/react-router", "@tanstack/router-plugin"],
+
+					// TanStack DevTools (separate chunk for dev tools)
+					devtools: [
+						"@tanstack/react-devtools",
+						"@tanstack/react-router-devtools",
+					],
+
+					// Radix UI components
+					radix: [
+						"@radix-ui/react-dialog",
+						"@radix-ui/react-dropdown-menu",
+						"@radix-ui/react-progress",
+						"@radix-ui/react-select",
+						"@radix-ui/react-separator",
+						"@radix-ui/react-slot",
+						"@radix-ui/react-tooltip",
+					],
+
+					// Icons
+					icons: ["lucide-react"],
+
+					// Animation
+					motion: ["motion"],
+
+					// Database
+					database: ["dexie"],
+
+					// State management
+					state: ["zustand"],
+
+					// Utilities
+					utils: [
+						"clsx",
+						"tailwind-merge",
+						"class-variance-authority",
+						"es-toolkit",
+						"uuid",
+					],
+
+					// i18n (Lingui core, translations will be loaded dynamically)
+					i18n: ["@lingui/core", "@lingui/react"],
+				},
+			},
+		},
+	},
 });
