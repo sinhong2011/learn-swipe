@@ -1,0 +1,80 @@
+# Lefthook configuration for learn-swipe
+# Git hooks manager for TypeScript/React project
+
+# Global settings
+min_version: 1.13.0
+source_dir: .lefthook
+
+# Pre-commit hooks - run before each commit
+pre-commit:
+  parallel: true
+  commands:
+    # Lint and format check
+    lint:
+      glob: "*.{js,jsx,ts,tsx,json,css}"
+      run: bun x biome check --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+      fail_text: "Linting failed. Run 'bun run check --write' to fix issues."
+
+    # Type checking
+    typecheck:
+      glob: "*.{ts,tsx}"
+      run: bun x tsc --noEmit
+      fail_text: "Type checking failed. Fix TypeScript errors before committing."
+
+    # Unit tests
+    test:
+      run: bun run test
+      fail_text: "Unit tests failed. Fix failing tests before committing."
+
+    # i18n extraction and compilation
+    i18n:
+      glob: "src/**/*.{ts,tsx}"
+      run: bun run translate
+      stage_fixed: true
+      fail_text: "i18n extraction/compilation failed."
+
+# Pre-push hooks - run before pushing to remote
+pre-push:
+  parallel: true
+  commands:
+    # Full build test
+    build:
+      run: bun run build
+      fail_text: "Build failed. Fix build errors before pushing."
+
+    # E2E tests (skip for now as no e2e tests exist)
+    e2e:
+      run: bun run test:e2e
+      fail_text: "E2E tests failed. Fix failing tests before pushing."
+
+# Commit message hooks - validate commit message format
+commit-msg:
+  commands:
+    # Conventional commits validation using commitlint
+    commitlint:
+      run: bun x commitlint --edit $1
+      fail_text: "Commit message validation failed. Please follow conventional commits format."
+
+# Post-checkout hooks - run after checkout
+post-checkout:
+  commands:
+    # Install dependencies if package.json changed
+    deps:
+      run: |
+        if git diff HEAD@{1} HEAD --name-only | grep -q "package.json\|bun.lock"; then
+          echo "📦 Dependencies changed, running bun install..."
+          bun install
+        fi
+
+# Skip hooks for specific scenarios
+skip_output:
+  - meta
+  - summary
+
+# Remote configuration (optional)
+# Uncomment and configure if you want to share hooks across team
+# remote:
+#   git_url: https://github.com/your-org/lefthook-configs
+#   ref: main
+#   config: lefthook.yml

@@ -1,5 +1,18 @@
 // Animate UI Components - Re-export all for easier importing
 
+// Components - Animate
+export {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from './components/animate/tabs'
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './components/animate/tooltip'
 // Components - Radix
 export {
   Sheet,
@@ -12,8 +25,7 @@ export {
   SheetPortal,
   SheetTitle,
   SheetTrigger,
-} from "./components/radix/sheet";
-
+} from './components/radix/sheet'
 export {
   Sidebar,
   SidebarContent,
@@ -23,8 +35,8 @@ export {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInset,
   SidebarInput,
+  SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuBadge,
@@ -39,32 +51,21 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
-} from "./components/radix/sidebar";
-
-export { Switch } from "./components/radix/switch";
-
-// Components - Animate
-export { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/animate/tabs";
-
-export {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./components/animate/tooltip";
+} from './components/radix/sidebar'
+export { Switch } from './components/radix/switch'
 
 // Primitives - Animate
-export { Slot } from "./primitives/animate/slot";
-export { 
-  Tabs as AnimateTabs, 
-  TabsContent as AnimateTabsContent, 
-  TabsList as AnimateTabsList, 
-  TabsTrigger as AnimateTabsTrigger 
-} from "./primitives/animate/tabs";
+export { Slot } from './primitives/animate/slot'
+export {
+  Tabs as AnimateTabs,
+  TabsContent as AnimateTabsContent,
+  TabsList as AnimateTabsList,
+  TabsTrigger as AnimateTabsTrigger,
+} from './primitives/animate/tabs'
 
 // Primitives - Effects
-export { Highlight, HighlightItem } from "./primitives/effects/highlight";
+export { Highlight, HighlightItem } from './primitives/effects/highlight'
 
 // Primitives - Radix
-export { Checkbox } from "./primitives/radix/checkbox";
-export { Switch as PrimitiveSwitch } from "./primitives/radix/switch";
+export { Checkbox } from './primitives/radix/checkbox'
+export { Switch as PrimitiveSwitch } from './primitives/radix/switch'
