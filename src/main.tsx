@@ -1,7 +1,7 @@
-import { I18nProvider } from '@lingui/react'
 import { createRouter, RouterProvider } from '@tanstack/react-router'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
+import { I18nProviderWrapper } from '@/components/i18n-provider-wrapper'
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen.ts'
@@ -45,9 +45,9 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-        <I18nProvider i18n={i18n}>
+        <I18nProviderWrapper>
           <RouterProvider router={router} />
-        </I18nProvider>
+        </I18nProviderWrapper>
       </ThemeProvider>
     </StrictMode>
   )

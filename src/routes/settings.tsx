@@ -1,4 +1,3 @@
-import { useLingui as useI18n } from '@lingui/react'
 import { useLingui } from '@lingui/react/macro'
 import { createFileRoute } from '@tanstack/react-router'
 import { Globe, Moon, Sun } from 'lucide-react'
@@ -13,7 +12,7 @@ import {
   SettingsToggleRow,
 } from '@/components/ui/ios-settings'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
-import { locales } from '@/i18n'
+import { activateLocale, locales } from '@/i18n'
 import { useAppStore } from '@/store/useAppStore'
 
 export const Route = createFileRoute('/settings')({
@@ -22,7 +21,7 @@ export const Route = createFileRoute('/settings')({
 
 function SettingsPage() {
   const { t } = useLingui()
-  const { i18n } = useI18n()
+
   const { theme, setTheme } = useTheme()
   const { language, setLanguage } = useAppStore()
 
@@ -32,10 +31,9 @@ function SettingsPage() {
     setTheme(checked ? 'dark' : 'light')
   }
 
-  const handleLanguageChange = (locale: string) => {
+  const handleLanguageChange = async (locale: string) => {
     setLanguage(locale)
-    i18n.activate(locale)
-    document.documentElement.lang = locale
+    await activateLocale(locale)
   }
 
   const isDarkMode = theme === 'dark'

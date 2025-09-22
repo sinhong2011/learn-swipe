@@ -11,4 +11,11 @@ export default defineConfig({
   ],
   format: 'po',
   compileNamespace: 'es',
+  compilerBabelOptions: {
+    minified: false,
+  },
+  orderBy: 'messageId',
+  fallbackLocales: {
+    default: 'en',
+  },
 })

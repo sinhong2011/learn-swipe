@@ -6,6 +6,7 @@ import {
   SidebarProvider,
 } from '@/components/animate-ui/components/radix/sidebar'
 import { AppSidebar } from '@/components/app-sidebar'
+
 import Header from '@/components/header'
 
 export const Route = createRootRoute({
