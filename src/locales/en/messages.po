@@ -13,6 +13,22 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/routes/manage/$deckId.tsx:123
+msgid "Are you sure you want to delete this card? This action cannot be undone."
+msgstr "Are you sure you want to delete this card? This action cannot be undone."
+
+#: src/components/difficulty-rating.tsx:39
+msgid "Correct with slight hesitation"
+msgstr "Correct with slight hesitation"
+
+#: src/components/card-list.tsx:147
+msgid "Updated"
+msgstr "Updated"
+
+#: src/routes/manage/$deckId.tsx:236
+msgid "Modify the question and answer for this card"
+msgstr "Modify the question and answer for this card"
+
 #: src/components/app-sidebar.tsx:80
 #: src/routes/settings.tsx:110
 msgid "Version 1.0.0"
@@ -22,13 +38,33 @@ msgstr "Version 1.0.0"
 #~ msgid "Edit src/routes/index.tsx and save to reload."
 #~ msgstr "Edit src/routes/index.tsx and save to reload."
 
-#: src/routes/decks.tsx:172
+#: src/routes/review/$deckId.tsx:135
+msgid "Loading review session..."
+msgstr "Loading review session..."
+
+#: src/routes/manage/$deckId.tsx:162
+msgid "Hide Quick Add"
+msgstr "Hide Quick Add"
+
+#: src/components/card-list.tsx:148
+msgid "Interval"
+msgstr "Interval"
+
+#: src/routes/decks.tsx:182
 msgid "Export CSV"
 msgstr "Export CSV"
 
 #: src/components/theme-toggle.tsx:23
 msgid "Toggle theme"
 msgstr "Toggle theme"
+
+#: src/components/difficulty-rating.tsx:31
+msgid "Correct but difficult"
+msgstr "Correct but difficult"
+
+#: src/components/card-editor.tsx:155
+msgid "Extra Fields"
+msgstr "Extra Fields"
 
 #: src/temp-route-translations.tsx:12
 #~ msgid "route.settings"
@@ -39,6 +75,19 @@ msgstr "Toggle theme"
 msgid "Validating format..."
 msgstr "Validating format..."
 
+#: src/components/card-editor.tsx:162
+msgid "{\"example\": \"value\"}"
+msgstr "{\"example\": \"value\"}"
+
+#: src/components/card-editor.tsx:142
+#: src/components/card-editor.tsx:241
+msgid "Answer"
+msgstr "Answer"
+
+#: src/components/card-list.tsx:175
+msgid "No cards in this deck."
+msgstr "No cards in this deck."
+
 #: src/components/upload-modal.tsx:74
 #: src/components/upload-modal.tsx:93
 #: src/routes/upload.tsx:60
@@ -46,7 +95,20 @@ msgstr "Validating format..."
 msgid "Please select a CSV or TXT file."
 msgstr "Please select a CSV or TXT file."
 
-#: src/components/upload-modal.tsx:211
+#: src/components/card-editor.tsx:256
+msgid "Adding..."
+msgstr "Adding..."
+
+#: src/routes/decks.tsx:239
+#: src/routes/index.tsx:180
+#: src/routes/review/$deckId.tsx:39
+#: src/routes/review/$deckId.tsx:50
+#: src/routes/review/$deckId.tsx:52
+#: src/routes/review/$deckId.tsx:69
+msgid "Review"
+msgstr "Review"
+
+#: src/components/upload-modal.tsx:218
 msgid "e.g. English Vocabulary"
 msgstr "e.g. English Vocabulary"
 
@@ -54,13 +116,42 @@ msgstr "e.g. English Vocabulary"
 msgid "Please choose a CSV file"
 msgstr "Please choose a CSV file"
 
+#. placeholder {0}: progress?.percentage
+#: src/routes/review/$deckId.tsx:238
+msgid "Progress: {0}%"
+msgstr "Progress: {0}%"
+
+#: src/components/card-list.tsx:217
+msgid "Edit card"
+msgstr "Edit card"
+
+#: src/routes/review/$deckId.tsx:146
+#: src/routes/study/$deckId.tsx:124
+msgid "All cards are up to date. Come back later for more reviews."
+msgstr "All cards are up to date. Come back later for more reviews."
+
+#. placeholder {0}: card.correct_count || 0
+#. placeholder {1}: card.review_count || 0
+#: src/components/card-list.tsx:250
+msgid "{0}/{1} correct"
+msgstr "{0}/{1} correct"
+
 #: src/components/app-breadcrumbs.tsx:28
 #: src/components/app-sidebar.tsx:29
+#: src/routes/manage/$deckId.tsx:34
 msgid "Decks"
 msgstr "Decks"
 
-#: src/components/upload-modal.tsx:179
-#: src/routes/upload.tsx:165
+#: src/components/card-editor.tsx:133
+msgid "Enter the question..."
+msgstr "Enter the question..."
+
+#: src/routes/manage/$deckId.tsx:162
+msgid "Quick Add"
+msgstr "Quick Add"
+
+#: src/components/upload-modal.tsx:186
+#: src/routes/upload.tsx:172
 msgid "Upload failed."
 msgstr "Upload failed."
 
@@ -68,29 +159,60 @@ msgstr "Upload failed."
 msgid "Language & Region"
 msgstr "Language & Region"
 
-#: src/routes/decks.tsx:190
+#: src/routes/decks.tsx:200
 msgid "Progress"
 msgstr "Progress"
+
+#: src/components/card-list.tsx:103
+#: src/routes/manage/$deckId.tsx:208
+msgid "Mature"
+msgstr "Mature"
+
+#: src/components/card-editor.tsx:244
+msgid "Enter answer..."
+msgstr "Enter answer..."
+
+#: src/components/card-list.tsx:82
+msgid "Unknown"
+msgstr "Unknown"
 
 #: src/routes/settings.tsx:108
 msgid "Flashcard Learning App"
 msgstr "Flashcard Learning App"
 
-#: src/routes/decks.tsx:92
+#: src/routes/decks.tsx:102
 msgid "Failed to delete deck"
 msgstr "Failed to delete deck"
 
-#: src/routes/index.tsx:126
+#: src/components/card-editor.tsx:256
+#: src/routes/manage/$deckId.tsx:167
+msgid "Add Card"
+msgstr "Add Card"
+
+#: src/routes/index.tsx:141
 msgid "Track Progress"
 msgstr "Track Progress"
 
-#: src/components/upload-modal.tsx:314
+#: src/components/upload-modal.tsx:321
 msgid "Uploading..."
 msgstr "Uploading..."
+
+#: src/routes/decks.tsx:257
+#: src/routes/index.tsx:198
+msgid "Manage Cards"
+msgstr "Manage Cards"
 
 #: src/components/app-sidebar.tsx:55
 msgid "Flashcard Learning"
 msgstr "Flashcard Learning"
+
+#: src/routes/review/$deckId.tsx:149
+msgid "Back to Decks"
+msgstr "Back to Decks"
+
+#: src/routes/manage/$deckId.tsx:152
+msgid "Manage your deck's questions and answers"
+msgstr "Manage your deck's questions and answers"
 
 #: src/routes/upload.tsx:88
 msgid "Please enter a deck name"
@@ -101,20 +223,24 @@ msgstr "Please enter a deck name"
 msgid "Reading file..."
 msgstr "Reading file..."
 
-#: src/routes/decks.tsx:99
+#: src/routes/decks.tsx:109
 msgid "Export functionality will be implemented soon."
 msgstr "Export functionality will be implemented soon."
 
-#: src/routes/index.tsx:121
+#: src/routes/index.tsx:136
 msgid "Swipe to Learn"
 msgstr "Swipe to Learn"
+
+#: src/components/card-editor.tsx:185
+msgid "Save Card"
+msgstr "Save Card"
 
 #: src/components/upload-modal.tsx:140
 #: src/routes/upload.tsx:126
 msgid "Creating deck..."
 msgstr "Creating deck..."
 
-#: src/routes/study/$deckId.tsx:97
+#: src/routes/study/$deckId.tsx:129
 msgid "No cards in this deck!"
 msgstr "No cards in this deck!"
 
@@ -123,9 +249,36 @@ msgstr "No cards in this deck!"
 msgid "Parsing CSV..."
 msgstr "Parsing CSV..."
 
-#: src/routes/index.tsx:87
+#. placeholder {0}: session.stats.new
+#: src/routes/review/$deckId.tsx:173
+msgid "New: {0}"
+msgstr "New: {0}"
+
+#: src/components/card-editor.tsx:123
+#: src/routes/manage/$deckId.tsx:235
+msgid "Edit Card"
+msgstr "Edit Card"
+
+#: src/components/difficulty-rating.tsx:47
+msgid "Perfect recall"
+msgstr "Perfect recall"
+
+#: src/routes/index.tsx:102
 msgid "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
 msgstr "Your mobile-first flashcard learning companion. Upload your CSV files and start learning with our intuitive Tinder-like swipe interface."
+
+#: src/components/card-list.tsx:125
+msgid "Search cards..."
+msgstr "Search cards..."
+
+#. placeholder {0}: session.stats.due + session.stats.overdue
+#: src/routes/review/$deckId.tsx:172
+msgid "Due: {0}"
+msgstr "Due: {0}"
+
+#: src/components/difficulty-rating.tsx:35
+msgid "Good"
+msgstr "Good"
 
 #: src/utils/route-translations.ts:22
 #~ msgid "Upload"
@@ -135,27 +288,35 @@ msgstr "Your mobile-first flashcard learning companion. Upload your CSV files an
 msgid "Failed to load decks"
 msgstr "Failed to load decks"
 
+#: src/routes/study/$deckId.tsx:122
+msgid "No cards to review right now!"
+msgstr "No cards to review right now!"
+
 #: src/temp-route-translations.tsx:15
 #~ msgid "route.profile"
 #~ msgstr "route.profile"
 
-#: src/routes/index.tsx:117
+#: src/routes/index.tsx:132
 msgid "Support for Anki-style CSV format with Front/Back columns"
 msgstr "Support for Anki-style CSV format with Front/Back columns"
 
-#: src/routes/study/$deckId.tsx:94
+#: src/components/difficulty-rating.tsx:43
+msgid "Easy"
+msgstr "Easy"
+
+#: src/routes/study/$deckId.tsx:117
 msgid "Loading…"
 msgstr "Loading…"
 
 #. placeholder {0}: deck.stats.total
 #. placeholder {1}: deck.stats.mastered
 #. placeholder {2}: deck.stats.due
-#: src/routes/index.tsx:152
+#: src/routes/index.tsx:167
 msgid "{0} cards • {1} mastered • {2} due"
 msgstr "{0} cards • {1} mastered • {2} due"
 
 #. placeholder {0}: deck.name
-#: src/routes/upload.tsx:150
+#: src/routes/upload.tsx:157
 msgid "Imported {count} cards to deck \"{0}\""
 msgstr "Imported {count} cards to deck \"{0}\""
 
@@ -163,11 +324,11 @@ msgstr "Imported {count} cards to deck \"{0}\""
 #~ msgid "route.decks"
 #~ msgstr "route.decks"
 
-#: src/routes/decks.tsx:139
+#: src/routes/decks.tsx:149
 msgid "No decks yet"
 msgstr "No decks yet"
 
-#: src/routes/index.tsx:135
+#: src/routes/index.tsx:150
 msgid "Your Decks"
 msgstr "Your Decks"
 
@@ -177,7 +338,7 @@ msgstr "Your Decks"
 msgid "Settings"
 msgstr "Settings"
 
-#: src/components/upload-modal.tsx:314
+#: src/components/upload-modal.tsx:321
 msgid "Import Deck"
 msgstr "Import Deck"
 
@@ -185,7 +346,7 @@ msgstr "Import Deck"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: src/components/upload-modal.tsx:206
+#: src/components/upload-modal.tsx:213
 msgid "Deck Name"
 msgstr "Deck Name"
 
@@ -193,17 +354,43 @@ msgstr "Deck Name"
 #~ msgid "route.upload"
 #~ msgstr "route.upload"
 
+#: src/components/card-editor.tsx:234
+msgid "Enter question..."
+msgstr "Enter question..."
+
+#. placeholder {0}: sortedCards.length
+#. placeholder {1}: cards.length
+#: src/components/card-list.tsx:165
+msgid "Showing {0} of {1} cards"
+msgstr "Showing {0} of {1} cards"
+
+#: src/components/card-list.tsx:102
+msgid "Young"
+msgstr "Young"
+
+#: src/components/card-editor.tsx:185
+msgid "Saving..."
+msgstr "Saving..."
+
 #: src/temp-route-translations.tsx:17
 #~ msgid "route.about"
 #~ msgstr "route.about"
 
-#: src/components/upload-modal.tsx:221
+#: src/components/difficulty-rating.tsx:23
+msgid "Incorrect - show again soon"
+msgstr "Incorrect - show again soon"
+
+#: src/components/upload-modal.tsx:228
 msgid "CSV File"
 msgstr "CSV File"
 
 #: src/components/language-switcher.tsx:38
 #~ msgid "Language:"
 #~ msgstr "Language:"
+
+#: src/components/card-list.tsx:174
+msgid "No cards match your search."
+msgstr "No cards match your search."
 
 #: src/routes/settings.tsx:55
 msgid "Light appearance"
@@ -215,13 +402,32 @@ msgstr "Appearance"
 
 #. placeholder {0}: deck.stats?.total || 0
 #. placeholder {1}: deck.stats?.mastered || 0
-#: src/routes/decks.tsx:160
+#: src/routes/decks.tsx:170
 msgid "{0} cards • {1} mastered"
 msgstr "{0} cards • {1} mastered"
+
+#: src/components/card-editor.tsx:123
+#: src/routes/manage/$deckId.tsx:225
+msgid "Add New Card"
+msgstr "Add New Card"
 
 #: src/routes/index.tsx:51
 #~ msgid "Learn TanStack"
 #~ msgstr "Learn TanStack"
+
+#: src/routes/review/$deckId.tsx:144
+msgid "No cards to review!"
+msgstr "No cards to review!"
+
+#: src/components/difficulty-rating.tsx:19
+msgid "Again"
+msgstr "Again"
+
+#: src/components/card-editor.tsx:130
+#: src/components/card-editor.tsx:231
+#: src/components/card-list.tsx:149
+msgid "Question"
+msgstr "Question"
 
 #: src/components/upload-modal.tsx:107
 msgid "Please choose a CSV file."
@@ -231,34 +437,43 @@ msgstr "Please choose a CSV file."
 #~ msgid "Help"
 #~ msgstr "Help"
 
-#: src/routes/index.tsx:95
+#: src/routes/index.tsx:110
 msgid "Get Started"
 msgstr "Get Started"
 
-#: src/routes/decks.tsx:179
+#: src/routes/manage/$deckId.tsx:22
+msgid "Manage Deck"
+msgstr "Manage Deck"
+
+#: src/routes/decks.tsx:189
 msgid "Delete"
 msgstr "Delete"
 
-#: src/components/upload-modal.tsx:321
+#: src/components/card-list.tsx:146
+msgid "Created"
+msgstr "Created"
+
+#: src/components/card-editor.tsx:179
+#: src/components/upload-modal.tsx:328
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/routes/decks.tsx:141
+#: src/routes/decks.tsx:151
 msgid "Create your first deck to start learning with spaced repetition."
 msgstr "Create your first deck to start learning with spaced repetition."
 
-#: src/routes/decks.tsx:132
-#: src/routes/index.tsx:138
+#: src/routes/decks.tsx:142
+#: src/routes/index.tsx:153
 msgid "Add Deck"
 msgstr "Add Deck"
 
 #. placeholder {0}: deck.stats?.due || 0
-#: src/routes/decks.tsx:214
+#: src/routes/decks.tsx:224
 msgid "{0} due"
 msgstr "{0} due"
 
 #. placeholder {0}: deck.name
-#: src/routes/decks.tsx:81
+#: src/routes/decks.tsx:91
 msgid "Are you sure you want to delete \"{0}\"? This action cannot be undone."
 msgstr "Are you sure you want to delete \"{0}\"? This action cannot be undone."
 
@@ -266,67 +481,99 @@ msgstr "Are you sure you want to delete \"{0}\"? This action cannot be undone."
 msgid "No valid rows found (need at least 1 with two columns)."
 msgstr "No valid rows found (need at least 1 with two columns)."
 
-#: src/components/upload-modal.tsx:193
+#: src/components/upload-modal.tsx:200
 msgid "Upload Flashcard Deck"
 msgstr "Upload Flashcard Deck"
 
-#: src/routes/index.tsx:127
+#: src/routes/index.tsx:142
 msgid "Spaced repetition system to optimize your learning"
 msgstr "Spaced repetition system to optimize your learning"
 
-#: src/routes/index.tsx:116
+#: src/components/difficulty-rating.tsx:27
+msgid "Hard"
+msgstr "Hard"
+
+#: src/routes/index.tsx:131
 #: src/routes/upload.tsx:32
 msgid "Upload CSV"
 msgstr "Upload CSV"
 
-#: src/routes/index.tsx:122
+#: src/routes/index.tsx:137
 msgid "Intuitive mobile-first interface with smooth swipe gestures"
 msgstr "Intuitive mobile-first interface with smooth swipe gestures"
 
 #: src/components/app-breadcrumbs.tsx:43
 #: src/components/app-sidebar.tsx:23
-#: src/routes/index.tsx:29
-#: src/routes/study/$deckId.tsx:50
+#: src/routes/index.tsx:36
+#: src/routes/manage/$deckId.tsx:33
+#: src/routes/review/$deckId.tsx:68
+#: src/routes/study/$deckId.tsx:52
 msgid "Home"
 msgstr "Home"
+
+#: src/components/card-list.tsx:100
+#: src/routes/manage/$deckId.tsx:192
+msgid "New"
+msgstr "New"
 
 #: src/components/blur-answer-toggle.tsx:24
 msgid "Blur Answer"
 msgstr "Blur Answer"
 
-#: src/components/upload-modal.tsx:251
+#: src/components/upload-modal.tsx:258
 msgid "Drop your CSV file here or click to browse"
 msgstr "Drop your CSV file here or click to browse"
 
-#: src/routes/study/$deckId.tsx:99
+#. placeholder {0}: card.interval || 1
+#: src/components/card-list.tsx:242
+msgid "{0}d interval"
+msgstr "{0}d interval"
+
+#: src/routes/manage/$deckId.tsx:186
+msgid "Total Cards"
+msgstr "Total Cards"
+
+#: src/routes/manage/$deckId.tsx:226
+msgid "Create a new flashcard for this deck"
+msgstr "Create a new flashcard for this deck"
+
+#: src/routes/study/$deckId.tsx:131
 msgid "Upload some cards to start studying."
 msgstr "Upload some cards to start studying."
 
-#: src/components/upload-modal.tsx:270
+#: src/routes/manage/$deckId.tsx:50
+msgid "Unknown Deck"
+msgstr "Unknown Deck"
+
+#: src/components/upload-modal.tsx:277
 msgid "Expected format:"
 msgstr "Expected format:"
 
+#: src/components/card-list.tsx:225
+msgid "Delete card"
+msgstr "Delete card"
+
 #: src/routes/decks.tsx:228
 #: src/routes/index.tsx:164
-msgid "Review All"
-msgstr "Review All"
+#~ msgid "Review All"
+#~ msgstr "Review All"
 
 #: src/routes/settings.tsx:54
 msgid "Dark Mode"
 msgstr "Dark Mode"
 
 #: src/components/app-breadcrumbs.tsx:30
-#: src/routes/decks.tsx:228
-#: src/routes/index.tsx:164
-#: src/routes/study/$deckId.tsx:25
-#: src/routes/study/$deckId.tsx:32
+#: src/routes/decks.tsx:247
+#: src/routes/index.tsx:188
+#: src/routes/study/$deckId.tsx:27
 #: src/routes/study/$deckId.tsx:34
-#: src/routes/study/$deckId.tsx:51
+#: src/routes/study/$deckId.tsx:36
+#: src/routes/study/$deckId.tsx:53
 msgid "Study"
 msgstr "Study"
 
-#: src/routes/decks.tsx:107
-#: src/routes/index.tsx:72
+#: src/routes/decks.tsx:117
+#: src/routes/index.tsx:87
 msgid "Loading decks..."
 msgstr "Loading decks..."
 
@@ -334,20 +581,37 @@ msgstr "Loading decks..."
 msgid "Please enter a deck name."
 msgstr "Please enter a deck name."
 
-#: src/routes/decks.tsx:120
+#: src/routes/review/$deckId.tsx:223
+msgid "Show Answer"
+msgstr "Show Answer"
+
+#: src/routes/decks.tsx:130
 msgid "Try Again"
 msgstr "Try Again"
+
+#: src/components/card-editor.tsx:145
+msgid "Enter the answer..."
+msgstr "Enter the answer..."
 
 #: src/temp-route-translations.tsx:13
 #~ msgid "route.study"
 #~ msgstr "route.study"
+
+#. placeholder {0}: cards.length
+#: src/components/card-list.tsx:166
+msgid "{0} cards total"
+msgstr "{0} cards total"
+
+#: src/components/card-editor.tsx:157
+msgid "JSON format, optional"
+msgstr "JSON format, optional"
 
 #: src/components/upload-modal.tsx:147
 #: src/routes/upload.tsx:133
 msgid "Storing cards..."
 msgstr "Storing cards..."
 
-#: src/routes/index.tsx:85
+#: src/routes/index.tsx:100
 msgid "Welcome to LearnSwipe"
 msgstr "Welcome to LearnSwipe"
 
@@ -360,10 +624,14 @@ msgstr "Welcome to LearnSwipe"
 msgid "About"
 msgstr "About"
 
-#: src/routes/decks.tsx:145
-#: src/routes/index.tsx:108
+#: src/routes/decks.tsx:155
+#: src/routes/index.tsx:123
 msgid "Upload Your First Deck"
 msgstr "Upload Your First Deck"
+
+#: src/routes/manage/$deckId.tsx:175
+msgid "Quick Add Card"
+msgstr "Quick Add Card"
 
 #: src/utils/route-translations.ts:20
 #~ msgid "Profile"
@@ -373,36 +641,57 @@ msgstr "Upload Your First Deck"
 #~ msgid "Language"
 #~ msgstr "Language"
 
+#: src/routes/manage/$deckId.tsx:35
+msgid "Manage"
+msgstr "Manage"
+
+#: src/components/card-list.tsx:101
+#: src/routes/manage/$deckId.tsx:202
+msgid "Learning"
+msgstr "Learning"
+
+#: src/components/card-editor.tsx:77
+msgid "Invalid JSON in extra fields"
+msgstr "Invalid JSON in extra fields"
+
 #: src/temp-route-translations.tsx:16
 #~ msgid "route.help"
 #~ msgstr "route.help"
 
-#: src/components/upload-modal.tsx:196
+#: src/components/upload-modal.tsx:203
 msgid "Upload a CSV file with your flashcards. Supports Anki-style format."
 msgstr "Upload a CSV file with your flashcards. Supports Anki-style format."
 
-#: src/routes/index.tsx:98
+#: src/routes/index.tsx:113
 msgid "Upload your first deck to begin your learning journey"
 msgstr "Upload your first deck to begin your learning journey"
 
-#: src/routes/decks.tsx:52
-#: src/routes/decks.tsx:129
+#: src/routes/decks.tsx:54
+#: src/routes/decks.tsx:139
 msgid "Deck Management"
 msgstr "Deck Management"
 
 #. placeholder {0}: deck.name
-#: src/components/upload-modal.tsx:164
+#: src/components/upload-modal.tsx:171
 msgid "Successfully imported {count} cards to deck \"{0}\""
 msgstr "Successfully imported {count} cards to deck \"{0}\""
+
+#: src/components/card-editor.tsx:95
+msgid "Failed to save card"
+msgstr "Failed to save card"
 
 #: src/routes/index.tsx:34
 #~ msgid "logo"
 #~ msgstr "logo"
 
-#: src/components/upload-modal.tsx:273
+#: src/components/upload-modal.tsx:280
 msgid "First column = Question, Second column = Answer. Additional columns stored as extra fields."
 msgstr "First column = Question, Second column = Answer. Additional columns stored as extra fields."
 
 #: src/routes/settings.tsx:55
 msgid "Dark appearance"
 msgstr "Dark appearance"
+
+#: src/components/card-editor.tsx:64
+msgid "Question and answer are required"
+msgstr "Question and answer are required"

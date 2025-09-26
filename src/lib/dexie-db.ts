@@ -15,6 +15,14 @@ export interface Card {
   extra_fields?: Record<string, unknown>
   interval: number // in days
   next_review: string // ISO date
+  // Enhanced SRS fields
+  ease_factor: number // SM-2 ease factor (default 2.5)
+  repetitions: number // number of successful reviews in a row
+  quality: number // last quality rating (0-5)
+  created_at: string // ISO date when card was created
+  updated_at: string // ISO date when card was last modified
+  review_count: number // total number of reviews
+  correct_count: number // number of correct reviews
 }
 
 // Dexie database class
@@ -26,17 +34,58 @@ export class LearnSwipeDB extends Dexie {
   constructor() {
     super('LearnSwipeDB')
 
+    // Version 1: Original schema
     this.version(1).stores({
       decks: 'deck_id, name',
       cards: '++id, deck_id, question, answer, interval, next_review',
     })
 
-    // Add hooks for data validation if needed
+    // Version 2: Enhanced SRS schema
+    this.version(2)
+      .stores({
+        decks: 'deck_id, name',
+        cards:
+          '++id, deck_id, question, answer, interval, next_review, ease_factor, repetitions, quality, created_at, updated_at, review_count, correct_count',
+      })
+      .upgrade(async (trans) => {
+        // Migrate existing cards to new schema with default SRS values
+        const cards = await trans.table('cards').toArray()
+        const now = new Date().toISOString()
+
+        for (const card of cards) {
+          await trans.table('cards').update(card.id, {
+            ease_factor: 2.5, // Default SM-2 ease factor
+            repetitions: card.interval > 1 ? 1 : 0, // Estimate based on current interval
+            quality: 3, // Neutral quality rating
+            created_at: now, // Set creation time to migration time
+            updated_at: now, // Set update time to migration time
+            review_count: card.interval > 1 ? 1 : 0, // Estimate review count
+            correct_count: card.interval > 1 ? 1 : 0, // Estimate correct count
+          })
+        }
+      })
+
+    // Add hooks for data validation
     this.cards.hook('creating', (_primKey, obj, _trans) => {
       // Ensure required fields are present
       if (!obj.deck_id || !obj.question || !obj.answer) {
         throw new Error('Missing required card fields')
       }
+
+      // Set default SRS values if not provided
+      const now = new Date().toISOString()
+      if (obj.ease_factor === undefined) obj.ease_factor = 2.5
+      if (obj.repetitions === undefined) obj.repetitions = 0
+      if (obj.quality === undefined) obj.quality = 0
+      if (obj.created_at === undefined) obj.created_at = now
+      if (obj.updated_at === undefined) obj.updated_at = now
+      if (obj.review_count === undefined) obj.review_count = 0
+      if (obj.correct_count === undefined) obj.correct_count = 0
+    })
+
+    this.cards.hook('updating', (_modifications, _primKey, obj, _trans) => {
+      // Update the updated_at timestamp on any modification
+      obj.updated_at = new Date().toISOString()
     })
   }
 }
@@ -93,6 +142,34 @@ export const dbHelpers = {
     await db.cards.update(cardId, updates)
   },
 
+  async getCard(cardId: number): Promise<Card | undefined> {
+    return await db.cards.get(cardId)
+  },
+
+  async deleteCard(cardId: number): Promise<void> {
+    await db.cards.delete(cardId)
+  },
+
+  async addCard(
+    deck_id: string,
+    card: Omit<Card, 'id' | 'deck_id'>
+  ): Promise<Card> {
+    const now = new Date().toISOString()
+    const newCard: Omit<Card, 'id'> = {
+      ...card,
+      deck_id,
+      ease_factor: card.ease_factor ?? 2.5,
+      repetitions: card.repetitions ?? 0,
+      quality: card.quality ?? 0,
+      created_at: card.created_at ?? now,
+      updated_at: card.updated_at ?? now,
+      review_count: card.review_count ?? 0,
+      correct_count: card.correct_count ?? 0,
+    }
+    const id = await db.cards.add(newCard)
+    return { ...newCard, id }
+  },
+
   async getDeckStats(
     deck_id: string
   ): Promise<{ total: number; mastered: number; due: number }> {
@@ -100,12 +177,69 @@ export const dbHelpers = {
     const now = new Date().toISOString()
 
     const total = cards.length
-    const mastered = cards.filter((c) => c.interval > 1).length
+    // Consider cards with interval >= 21 days as mastered (mature cards)
+    const mastered = cards.filter((c) => (c.interval || 1) >= 21).length
     const due = cards.filter(
-      (c) => !c.next_review || c.next_review <= now
+      (c) =>
+        !c.next_review || c.next_review <= now || (c.review_count || 0) === 0
     ).length
 
     return { total, mastered, due }
+  },
+
+  // Enhanced deck statistics with SRS categories
+  async getEnhancedDeckStats(deck_id: string): Promise<{
+    total: number
+    new: number
+    learning: number
+    young: number
+    mature: number
+    due: number
+    overdue: number
+  }> {
+    const cards = await db.cards.where('deck_id').equals(deck_id).toArray()
+    const now = new Date().toISOString()
+
+    const stats = {
+      total: cards.length,
+      new: 0,
+      learning: 0,
+      young: 0,
+      mature: 0,
+      due: 0,
+      overdue: 0,
+    }
+
+    for (const card of cards) {
+      const reviewCount = card.review_count || 0
+      const interval = card.interval || 1
+      const nextReview = card.next_review
+
+      // Categorize by mastery level
+      if (reviewCount === 0) {
+        stats.new++
+      } else if (interval < 21) {
+        stats.learning++
+      } else if (interval < 100) {
+        stats.young++
+      } else {
+        stats.mature++
+      }
+
+      // Check if due or overdue
+      if (!nextReview || nextReview <= now) {
+        if (reviewCount === 0) {
+          // New cards count as due
+          stats.due++
+        } else if (nextReview && nextReview < now) {
+          stats.overdue++
+        } else {
+          stats.due++
+        }
+      }
+    }
+
+    return stats
   },
 }
 
@@ -117,7 +251,8 @@ export function nextReviewAfterDays(days: number, from = new Date()): string {
   return d.toISOString()
 }
 
-// Spaced Repetition System (SRS) algorithm
+// Legacy SRS algorithm (kept for backward compatibility)
+// Use applySM2Algorithm from srs-algorithm.ts for new implementations
 export function applySRS(
   card: Card,
   correct: boolean,

@@ -41,6 +41,13 @@ export function ZustandDexieExample() {
           answer: 'A JavaScript library for building user interfaces',
           interval: 1,
           next_review: new Date().toISOString(),
+          ease_factor: 2.5,
+          repetitions: 0,
+          quality: 0,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          review_count: 0,
+          correct_count: 0,
         },
         {
           deck_id: newDeck.deck_id,
@@ -48,6 +55,13 @@ export function ZustandDexieExample() {
           answer: 'A small, fast and scalable state management solution',
           interval: 1,
           next_review: new Date().toISOString(),
+          ease_factor: 2.5,
+          repetitions: 0,
+          quality: 0,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+          review_count: 0,
+          correct_count: 0,
         },
       ])
 

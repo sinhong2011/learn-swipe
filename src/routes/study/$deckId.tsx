@@ -3,6 +3,7 @@ import { createFileRoute, useParams } from '@tanstack/react-router'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { StudyPageHeader } from '@/components/study-page-header'
 import { WaveMask } from '@/components/wave-mask'
+import { createReviewSession, type ReviewSession } from '@/lib/card-scheduler'
 import { type Card, db, dbHelpers } from '@/lib/dexie-db'
 import { useAppStore } from '@/store/useAppStore'
 import { useDeckStore } from '@/store/useDeckStore'
@@ -15,6 +16,7 @@ function StudyPage() {
   const { t } = useLingui()
   const { deckId } = useParams({ from: '/study/$deckId' })
   const [cards, setCards] = useState<Card[]>([])
+  const [reviewSession, setReviewSession] = useState<ReviewSession | null>(null)
   const [loading, setLoading] = useState(true)
 
   // Get blur preference from deck store
@@ -58,11 +60,30 @@ function StudyPage() {
   useEffect(() => {
     let mounted = true
     ;(async () => {
-      // Always load all cards for study (no due/mastered filtering)
-      const allCards = await dbHelpers.getAllCards(deckId)
-      if (mounted) {
-        setCards(allCards)
-        setLoading(false)
+      try {
+        // Create a review session with SRS algorithm and randomization
+        const session = await createReviewSession(deckId, {
+          maxNewCards: 50, // Allow more new cards in study mode
+          maxReviewCards: 200, // Allow more review cards
+          randomizeWithinPriority: true, // Randomize within same priority level
+          includeOverdue: true,
+          includeDue: true,
+          includeNew: true,
+        })
+
+        if (mounted) {
+          setReviewSession(session)
+          setCards(session.cards)
+          setLoading(false)
+        }
+      } catch (error) {
+        console.error('Failed to create review session:', error)
+        // Fallback to loading all cards if review session fails
+        const allCards = await dbHelpers.getAllCards(deckId)
+        if (mounted) {
+          setCards(allCards)
+          setLoading(false)
+        }
       }
     })()
     return () => {
@@ -87,17 +108,30 @@ function StudyPage() {
   return (
     <div className="relative max-w-md mx-auto p-4 pb-24 h-full space-y-8">
       <StudyPageHeader
-        deckName={String(cards.length)}
+        deckName={
+          reviewSession ? `${deckName} (${cards.length} cards)` : deckName
+        }
         isBlurred={isBlurred}
         onBlurToggle={setIsBlurred}
       />
       {loading && <p className="text-muted-foreground">{t`Loading…`}</p>}
       {!loading && cards.length === 0 && (
         <div className="text-center space-y-3">
-          <p className="text-foreground/80">{t`No cards in this deck!`}</p>
-          <p className="text-sm text-muted-foreground">
-            {t`Upload some cards to start studying.`}
-          </p>
+          {reviewSession ? (
+            <>
+              <p className="text-foreground/80">{t`No cards to review right now!`}</p>
+              <p className="text-sm text-muted-foreground">
+                {t`All cards are up to date. Come back later for more reviews.`}
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="text-foreground/80">{t`No cards in this deck!`}</p>
+              <p className="text-sm text-muted-foreground">
+                {t`Upload some cards to start studying.`}
+              </p>
+            </>
+          )}
         </div>
       )}
       <div className="relative h-[65vh] w-full max-w-[420px] select-none grid place-items-center">
