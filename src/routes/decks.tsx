@@ -3,9 +3,11 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import {
   BarChart3,
   BookOpen,
+  Brain,
   Download,
   MoreVertical,
   Play,
+  Settings,
   Trash2,
   Upload,
 } from 'lucide-react'
@@ -73,6 +75,14 @@ function DecksPage() {
 
   const handleStudyDeck = (deckId: string) => {
     navigate({ to: '/study/$deckId', params: { deckId } })
+  }
+
+  const handleReviewDeck = (deckId: string) => {
+    navigate({ to: '/review/$deckId', params: { deckId } })
+  }
+
+  const handleManageDeck = (deckId: string) => {
+    navigate({ to: '/manage/$deckId', params: { deckId } })
   }
 
   const handleDeleteDeck = async (deck: DeckWithStats) => {
@@ -216,16 +226,35 @@ function DecksPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex gap-2 pt-2">
+                  <div className="space-y-2 pt-2">
+                    <div className="flex gap-2">
+                      <Button
+                        onClick={() => handleReviewDeck(deck.deck_id)}
+                        className="flex-1"
+                        variant={
+                          (deck.stats?.due || 0) === 0 ? 'outline' : 'default'
+                        }
+                      >
+                        <Brain className="h-4 w-4 mr-2" />
+                        {t`Review`}
+                      </Button>
+                      <Button
+                        onClick={() => handleStudyDeck(deck.deck_id)}
+                        variant="outline"
+                        className="flex-1"
+                      >
+                        <Play className="h-4 w-4 mr-2" />
+                        {t`Study`}
+                      </Button>
+                    </div>
                     <Button
-                      onClick={() => handleStudyDeck(deck.deck_id)}
-                      className="flex-1"
-                      variant={
-                        (deck.stats?.due || 0) === 0 ? 'outline' : 'default'
-                      }
+                      onClick={() => handleManageDeck(deck.deck_id)}
+                      variant="ghost"
+                      size="sm"
+                      className="w-full"
                     >
-                      <Play className="h-4 w-4 mr-2" />
-                      {(deck.stats?.due || 0) === 0 ? t`Review All` : t`Study`}
+                      <Settings className="h-4 w-4 mr-2" />
+                      {t`Manage Cards`}
                     </Button>
                   </div>
                 </div>

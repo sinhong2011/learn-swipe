@@ -1,9 +1,4 @@
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { expect, test } from '@playwright/test'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 test.describe('Study Interface', () => {
   test.beforeEach(async ({ page }) => {
@@ -11,8 +6,27 @@ test.describe('Study Interface', () => {
     await page.goto('/upload')
     await page.fill('input[placeholder*="English Vocabulary"]', 'E2E Test Deck')
 
-    const csvPath = path.join(__dirname, 'fixtures', 'sample.csv')
-    await page.setInputFiles('input[type="file"]', csvPath)
+    // Create and upload CSV file using the same method as accessibility tests
+    const csvContent =
+      'Front,Back,Tags\nWhat is the capital of France?,Paris,Geography\nHow do you say hello in Spanish?,Hola,Language\nWhat is 2 + 2?,4,Math\nWho wrote Romeo and Juliet?,Shakespeare,Literature\nWhat is the largest planet?,Jupiter,Science'
+
+    await page.evaluate((csvContent) => {
+      const blob = new Blob([csvContent], { type: 'text/csv' })
+      const file = new File([blob], 'sample.csv', { type: 'text/csv' })
+
+      const input = document.querySelector(
+        'input[type="file"]'
+      ) as HTMLInputElement
+      if (input) {
+        const dataTransfer = new DataTransfer()
+        dataTransfer.items.add(file)
+        input.files = dataTransfer.files
+        input.dispatchEvent(new Event('change', { bubbles: true }))
+      }
+    }, csvContent)
+
+    // Wait for Import button to be enabled and click it
+    await expect(page.locator('button:has-text("Import")')).toBeEnabled()
     await page.click('button:has-text("Import")')
 
     // Wait for redirect to study page

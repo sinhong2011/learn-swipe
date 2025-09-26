@@ -1,6 +1,13 @@
 import { useLingui } from '@lingui/react/macro'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { BarChart3, BookOpen, Play, Upload } from 'lucide-react'
+import {
+  BarChart3,
+  BookOpen,
+  Brain,
+  Play,
+  Settings,
+  Upload,
+} from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
@@ -62,6 +69,14 @@ function App() {
 
   const handleStudyDeck = (deckId: string) => {
     navigate({ to: '/study/$deckId', params: { deckId } })
+  }
+
+  const handleReviewDeck = (deckId: string) => {
+    navigate({ to: '/review/$deckId', params: { deckId } })
+  }
+
+  const handleManageDeck = (deckId: string) => {
+    navigate({ to: '/manage/$deckId', params: { deckId } })
   }
 
   if (loading) {
@@ -154,14 +169,33 @@ function App() {
                   )}
                 </CardHeader>
                 <CardContent>
-                  <div className="flex gap-2">
+                  <div className="space-y-2">
+                    <div className="flex gap-2">
+                      <Button
+                        onClick={() => handleReviewDeck(deck.deck_id)}
+                        className="flex-1"
+                        variant={deck.stats?.due === 0 ? 'outline' : 'default'}
+                      >
+                        <Brain className="h-4 w-4 mr-2" />
+                        {t`Review`}
+                      </Button>
+                      <Button
+                        onClick={() => handleStudyDeck(deck.deck_id)}
+                        variant="outline"
+                        className="flex-1"
+                      >
+                        <Play className="h-4 w-4 mr-2" />
+                        {t`Study`}
+                      </Button>
+                    </div>
                     <Button
-                      onClick={() => handleStudyDeck(deck.deck_id)}
-                      className="flex-1"
-                      variant={deck.stats?.due === 0 ? 'outline' : 'default'}
+                      onClick={() => handleManageDeck(deck.deck_id)}
+                      variant="ghost"
+                      size="sm"
+                      className="w-full"
                     >
-                      <Play className="h-4 w-4 mr-2" />
-                      {deck.stats?.due === 0 ? t`Review All` : t`Study`}
+                      <Settings className="h-4 w-4 mr-2" />
+                      {t`Manage Cards`}
                     </Button>
                   </div>
                 </CardContent>

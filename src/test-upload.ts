@@ -44,6 +44,13 @@ What is the largest planet?,Jupiter,Science`
         extra_fields: card.extra_fields,
         interval: 1,
         next_review: nextReviewAfterDays(0),
+        ease_factor: 2.5,
+        repetitions: 0,
+        quality: 0,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        review_count: 0,
+        correct_count: 0,
       }))
     )
     console.log('Added cards count:', count)
